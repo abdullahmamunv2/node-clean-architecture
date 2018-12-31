@@ -1,0 +1,11 @@
+# Case 1 : 
+    1.1 User will search on text box and select from autocomplete list.
+    1.2 Response : Related address and google map position will shown.
+
+# Case 2 : 
+    2.1 User can change google map position with cursor as well.
+
+Survey :
+    # Case 1 : A form as well as google map will be shown to user. Anyone can contriubte to our system by prividing addresses.
+    # Case 2 : We have to find best possible address of a location (As more than one user can provide multiple address for same location.)********
+    # Case 3 : 
