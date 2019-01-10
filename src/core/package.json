@@ -1,0 +1,14 @@
+{
+  "name": "findaddresscore",
+  "version": "1.0.0",
+  "description": "core domain part of findmyaddress application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "automapper-ts": "^1.9.0"
+  }
+}
