@@ -1,4 +1,4 @@
-import { BaseRequest } from "../base";
+import BaseRequest from "../base";
 
 export class CreateBaseModel extends BaseRequest {
     public countryName : string = "Bangladesh";

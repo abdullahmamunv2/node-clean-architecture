@@ -13,5 +13,34 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "homepage": "https://bitbucket.org/iamcharlie/findmyaddress#readme"
+  "homepage": "https://bitbucket.org/iamcharlie/findmyaddress#readme",
+  "dependencies": {
+    "@types/cors": "^2.8.4",
+    "@types/express": "^4.16.0",
+    "@types/morgan": "^1.7.35",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "module-alias": "^2.2.0",
+    "mongoose": "^5.4.13",
+    "morgan": "^1.9.1"
+  },
+  "_moduleAliases": {
+    "@root": "dist",
+    "@core/domain": "dist/core/domain",
+    "@core/exceptions": "dist/core/exceptions",
+    "@core/io.port": "dist/core/io.port",
+    "@core/Imapper": "dist/core/mapper",
+    "@core/RRmodel": "dist/core/RRmodel",
+    "@core/Interactor": "dist/core/interactor",
+    "@core/Ivalidator": "dist/core/validator",
+    "@adapter/controller": "dist/adapter/controller",
+    "@adapter/mapper": "dist/adapter/mapper",
+    "@adapter/presenter": "dist/adapter/presenter",
+    "@adapter/viewmodel": "dist/adapter/viewmodel",
+    "@db/mongo": "dist/infrastructure/persistance/db/mongo"
+  },
+  "devDependencies": {
+    "@types/mongodb": "^3.1.19",
+    "@types/mongoose": "^5.3.17"
+  }
 }

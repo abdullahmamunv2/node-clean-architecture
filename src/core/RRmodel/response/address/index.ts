@@ -1,6 +1,19 @@
-import {Id} from './crud';
-
+import {
+    CreateModel,
+    UpdateModel,
+    DeleteModel,
+    ReadBaseModel,
+    ReadRuralModel,
+    ReadUrbanModel,
+    ReadAllModel
+} from './crud';
 
 export {
-    Id
+    CreateModel,
+    UpdateModel,
+    DeleteModel,
+    ReadBaseModel,
+    ReadRuralModel,
+    ReadUrbanModel,
+    ReadAllModel
 }

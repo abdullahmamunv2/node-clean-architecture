@@ -1,4 +1,4 @@
 
-export class BaseRequest {
+export default class BaseRequest {
     
 }

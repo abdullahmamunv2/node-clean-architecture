@@ -1,6 +1,6 @@
 import * as Entity from "./entity";
 import * as IEntityGateway from "./entity.gateway";
-import * as Exception  from  './exception';
+import * as EntityException  from  './entity.exception';
 import {
     IPagination,
     ISorts,
@@ -16,7 +16,7 @@ import {
 export {
     Entity,
     IEntityGateway,
-    Exception,
+    EntityException,
     IPagination,
     ISorts,
     IConditions,

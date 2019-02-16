@@ -10,12 +10,3 @@ export class BaseResponse {
     }
 }
 
-export class ID<T> {
-    private id : T;
-    constructor(id : T){
-        this.id = id;
-    }
-    public getVal() : T{
-        return this.id;
-    } 
-}

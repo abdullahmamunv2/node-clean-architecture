@@ -1,6 +1,8 @@
 
-import * as Address from './address'
+import * as Address from './address';
+import {BaseResponse} from './base';
 
 export {
-    Address
+    Address,
+    BaseResponse
 }

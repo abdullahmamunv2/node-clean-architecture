@@ -1,9 +1,11 @@
-import {ReqModel}       from '../../RRmodel';
-import {IQuery}          from '../../domain';
+import {ReqModel} from '@core/RRmodel'
+import {
+    IQuery
+   } from '@core/domain'
 
 export interface IAddressCRUD {
 
-    get(id : number) : Promise<any>;
+    get(id : number|string) : Promise<any>;
     getAll(query :IQuery ):Promise<any>;
     create(req : ReqModel.Address.AddressCRUD.CreateBaseModel):Promise<any>;
     update(req : ReqModel.Address.AddressCRUD.UpdateModel) :Promise<any>;

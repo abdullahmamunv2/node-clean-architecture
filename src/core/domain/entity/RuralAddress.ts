@@ -1,5 +1,5 @@
-import {BaseAddress} from "./BaseAddress"
-export class RuralAddress extends BaseAddress {
+import BaseAddress from "./BaseAddress"
+export default class RuralAddress extends BaseAddress {
     public village     : string ="";
     public postOffice  : string = "";
     public thana       : string = "";

@@ -1,40 +1,56 @@
-import {Domain,IOport,RRmodel} from '../../' 
 
-export class AddressCRUDInteractor implements IOport.InputPort.IAddressCRUD {
 
-    entityGateway : Domain.IEntityGateway.IAddressGateWay;
-    outputPort    : IOport.OutputPort.IAddressCRUD;
-    constructor(entityGateway : Domain.IEntityGateway.IAddressGateWay,
-                outputPort    : IOport.OutputPort.IAddressCRUD  ){
+import {
+        Entity,
+        IEntityGateway,
+        IQuery
+       } from '@core/domain'
+
+import {Response} from '@core/Imapper'
+import {InputPort,OutputPort} from '@core/io.port'
+import {ResModel, ReqModel} from '@core/RRmodel'
+
+export class AddressCRUDInteractor implements InputPort.IAddressCRUD {
+
+    entityGateway : IEntityGateway.IAddressGateWay;
+    outputPort    : OutputPort.IAddressCRUD;
+    mapper        : Response.Address.IAddressResCRUDMapper;
+    constructor(
+                entityGateway : IEntityGateway.IAddressGateWay,
+                outputPort    : OutputPort.IAddressCRUD,
+                mapper        : Response.Address.IAddressResCRUDMapper ){
 
                     this.entityGateway = entityGateway;
-                    this.outputPort    = outputPort
+                    this.outputPort    = outputPort;
+                    this.mapper        = mapper;
     }
 
     async get(id: number | string): Promise<any> {
         try {
-            let address : Domain.Entity.BaseAddress = await this.entityGateway.get(id);
+            let address : Entity.BaseAddress = await this.entityGateway.get(id);
+            let response : ResModel.BaseResponse  = this.mapper.read(address);
+            this.outputPort.presentReadAddress(response);
             return Promise.resolve();
         }catch(err){
             return Promise.reject();
         }
     }
 
-    async getAll(query: Domain.IQuery): Promise<any> {
+    async getAll(query: IQuery): Promise<any> {
         try {
-            let address : Domain.Entity.BaseAddress[] = await this.entityGateway.getAll(query);
+            let address : Entity.BaseAddress[] = await this.entityGateway.getAll(query);
             return Promise.resolve();
         }catch(err){
             return Promise.reject();
         }
     }
-    create(req: RRmodel.ReqModel.Address.AddressCRUD.CreateBaseModel): Promise<any> {
+    create(req: ReqModel.Address.AddressCRUD.CreateBaseModel): Promise<any> {
         throw new Error("Method not implemented.");
     }
-    update(req: RRmodel.ReqModel.Address.AddressCRUD.UpdateModel): Promise<any> {
+    update(req: ReqModel.Address.AddressCRUD.UpdateModel): Promise<any> {
         throw new Error("Method not implemented.");
     }
-    delete(req: RRmodel.ReqModel.Address.AddressCRUD.DeleteModel): Promise<any> {
+    delete(req: ReqModel.Address.AddressCRUD.DeleteModel): Promise<any> {
         throw new Error("Method not implemented.");
     }
 

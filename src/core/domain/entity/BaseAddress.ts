@@ -1,7 +1,7 @@
-import { ID } from "./Id";
 
-export class BaseAddress {
-    public id          : ID<number>     = new ID(0);
+
+export default class BaseAddress {
+    public id          : string|number='';
     public countryName : string = "Bangladesh";
     public countryCode : string = "BD";
     public type        : string = "";

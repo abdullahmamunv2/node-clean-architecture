@@ -1,5 +1,5 @@
-import {BaseAddress} from "./BaseAddress"
-export class UrbanAddress extends BaseAddress {
+import BaseAddress from "./BaseAddress"
+export default class UrbanAddress extends BaseAddress {
     public streetName   : string   ="";
     public streetNumber : number = 0;
     public TownName     : string = "";

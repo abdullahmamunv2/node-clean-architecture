@@ -1,7 +1,10 @@
 
+import {ResModel} from '@core/RRmodel'
+
 export interface IAddressCRUD {
-    presentCreateAddress() : void;
-    presentUpdateAddress() : void;
-    presentDeleteAddress() : void;
-    presentReadAddress()   : void; 
+    presentCreateAddress(response   : ResModel.BaseResponse)   : void;
+    presentUpdateAddress(response   : ResModel.BaseResponse)   : void;
+    presentDeleteAddress(response   : ResModel.BaseResponse)   : void;
+    presentReadAddress  (response   : ResModel.BaseResponse)   : void;
+    presentReadAllAddress(response  : ResModel.BaseResponse)   : void;
 }
