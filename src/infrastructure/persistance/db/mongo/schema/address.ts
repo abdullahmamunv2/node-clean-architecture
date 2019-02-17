@@ -10,7 +10,10 @@ export interface IAddressModel extends IAddress, Document {
 
 var AddressSchema: Schema = new Schema({
     
-    _id          : String,
+    _id          : {
+      type : String,
+      
+    },
     countryName : String,
     countryCode : String,
     type        : String,

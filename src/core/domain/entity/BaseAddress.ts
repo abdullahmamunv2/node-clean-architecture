@@ -8,4 +8,7 @@ export default class BaseAddress {
     constructor(type:string){
         this.type = type;
     }
+    isUrban():boolean{
+        return this.type === 'urban';
+    }
 }

@@ -39,18 +39,10 @@
      "moduleResolution": "node",            /* Specify module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6). */
      "baseUrl": "src",                       /* Base directory to resolve non-absolute module names. */
      "paths": {
-      "@core/domain": ["core/domain"],
-      "@core/exceptions": ["core/exceptions"],
-      "@core/io.port": ["core/io.port"],
-      "@core/Imapper": ["core/mapper"],
-      "@core/RRmodel": ["core/RRmodel"],
-      "@core/Interactor": ["core/interactor"],
-      "@core/Ivalidator": ["core/validator"],
-      "@adapter/controller": ["adapter/controller"],
-      "@adapter/mapper": ["adapter/mapper"],
-      "@adapter/presenter": ["adapter/presenter"],
-      "@adapter/viewmodel": ["adapter/viewmodel"],
-      "@db/mongo": ["infrastructure/persistance/db/mongo"]
+      "@core/*": ["core/*"],
+      "@adapter/*": ["adapter/*"],
+      "@db/*": ["infrastructure/persistance/db/*"],
+      "@entity.gateway/*": ["infrastructure/persistance/entity.gateway/*"]
      },                           /* A series of entries which re-map imports to lookup locations relative to the 'baseUrl'. */
     // "rootDirs": [],                        /* List of root folders whose combined content represents the structure of the project at runtime. */
     // "typeRoots": [],                       /* List of folders to include type definitions from. */

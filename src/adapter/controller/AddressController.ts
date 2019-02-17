@@ -1,8 +1,8 @@
 
 
 import {IEntityGateway} from '@core/domain'
-import {AddressInteractor} from '@core/Interactor'
-import {Response} from '@core/Imapper'
+import {AddressInteractor} from '@core/interactor'
+import {Response} from '@core/mapper'
 import {InputPort,OutputPort} from '@core/io.port'
 
 export class AddressController {

@@ -1,3 +1,4 @@
+import 'automapper-ts/dist/automapper';
 import {
     IEntityGateway,
     Entity,
@@ -9,7 +10,20 @@ import { Address,IAddressModel,handleError } from '@db/mongo'
 
 export default class AddressGateWay implements IEntityGateway.IAddressGateWay {
     constructor(){
+        automapper.createMap('UrbanAddress', 'IAddressModel')
+                  .convertToType(IAddressModel);
         
+        automapper.createMap('RuralAddress', 'IAddressModel')
+                  .convertToType(Address);
+
+        automapper.createMap( 'IAddressModel','Entity.RuralAddress')
+                  .forSourceMember('_id',(opts:any)=>{
+
+                  }).convertToType(Entity.RuralAddress);
+        automapper.createMap( 'IAddressModel','Entity.UrbanAddress')
+        .forSourceMember('_id',(opts:any)=>{
+
+        }).convertToType(Entity.UrbanAddress);
     }
     async get(id: string | number): Promise<Entity.BaseAddress> {
         let address : IAddressModel | null=null;
@@ -53,8 +67,20 @@ export default class AddressGateWay implements IEntityGateway.IAddressGateWay {
     getAll(query: IQuery): Promise<Entity.BaseAddress[]> {
         throw new Error("Method not implemented.");
     }
-    create(address: Entity.BaseAddress): Promise<Entity.BaseAddress> {
-        throw new Error("Method not implemented.");
+    async create(address: Entity.BaseAddress): Promise<Entity.BaseAddress> {
+        let addressModelSource : Address;
+        if(address.isUrban()){
+            addressModelSource = automapper.map('Entity.UrbanAddress', 'IAddressModel',address);
+        } 
+        else{
+            addressModelSource = automapper.map('Entity.UrbanAddress', 'IAddressModel',address);
+        }
+        try{
+            addressModelSource = await Address.create(addressModelSource);
+        }catch(error){
+            throw handleError(error);
+        }
+
     }
     update(address: Entity.BaseAddress): Promise<Entity.BaseAddress> {
         throw new Error("Method not implemented.");
