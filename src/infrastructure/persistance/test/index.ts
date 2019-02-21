@@ -1,11 +1,12 @@
 require('module-alias/register');
-import {client,IAddressModel,Address} from '@db/mongo';
+import {client} from '@db/mongo';
+import {UrbanAddress} from '@core/domain/entity'
 import {AddressGateway}   from '@entity.gateway/mongo'
 import { Error } from 'mongoose';
 let config = {
     "uri"     : "mongodb://127.0.0.1:27017/find-my-address",
     "options" : {
-        "useNewUrlParser": true,
+        "useNewUrlParser"   : true,
         "bufferCommands"    : true,
         "autoIndex"         : true,
         "dbName"            : "find-my-address",
@@ -16,11 +17,14 @@ let config = {
     } 
 }
 
-let address   = new AddressGateway();
+let addressGateway   = new AddressGateway();
+
+let address = new UrbanAddress();
+address.streetName="mouchak";
 
 client.initConnection(config.uri,config.options).then(()=>{
     console.log('connection open...');
-    address.get(1).then((data)=>{
+    addressGateway.create(address).then((data)=>{
         console.log(data);
     }).catch((error:Error)=>{
         console.log(error);

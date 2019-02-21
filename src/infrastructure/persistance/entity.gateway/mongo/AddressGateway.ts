@@ -5,28 +5,25 @@ import {
     EntityException,
     IQuery} from '@core/domain'
 
-import { Address,IAddressModel,handleError } from '@db/mongo'
+import { handleError } from '@db/mongo'
+import { Address,AddressDocument,AddressModel } from '@db/mongo/schema'
 
 
 export default class AddressGateWay implements IEntityGateway.IAddressGateWay {
     constructor(){
-        automapper.createMap('UrbanAddress', 'IAddressModel')
-                  .convertToType(IAddressModel);
+        automapper.createMap('UrbanAddress', 'AddressModel')
+                  .convertToType(AddressModel);
         
-        automapper.createMap('RuralAddress', 'IAddressModel')
-                  .convertToType(Address);
+        automapper.createMap('RuralAddress', 'AddressModel')
+                  .convertToType(AddressModel);
 
-        automapper.createMap( 'IAddressModel','Entity.RuralAddress')
-                  .forSourceMember('_id',(opts:any)=>{
-
-                  }).convertToType(Entity.RuralAddress);
-        automapper.createMap( 'IAddressModel','Entity.UrbanAddress')
-        .forSourceMember('_id',(opts:any)=>{
-
-        }).convertToType(Entity.UrbanAddress);
+        automapper.createMap( 'AddressModel','RuralAddress')
+                  .convertToType(Entity.RuralAddress);
+        automapper.createMap( 'AddressModel','UrbanAddress')
+        .convertToType(Entity.UrbanAddress);
     }
     async get(id: string | number): Promise<Entity.BaseAddress> {
-        let address : IAddressModel | null=null;
+        let address : AddressDocument | null=null;
         try{
             address = await Address.findById(id);
         }catch(error){
@@ -68,16 +65,20 @@ export default class AddressGateWay implements IEntityGateway.IAddressGateWay {
         throw new Error("Method not implemented.");
     }
     async create(address: Entity.BaseAddress): Promise<Entity.BaseAddress> {
-        let addressModelSource : Address;
+        let addressModelSource : AddressModel;
         if(address.isUrban()){
-            addressModelSource = automapper.map('Entity.UrbanAddress', 'IAddressModel',address);
+            addressModelSource = automapper.map('UrbanAddress', 'AddressModel',address);
         } 
         else{
-            addressModelSource = automapper.map('Entity.UrbanAddress', 'IAddressModel',address);
+            addressModelSource = automapper.map('RuralAddress', 'AddressModel',address);
         }
         try{
-            addressModelSource = await Address.create(addressModelSource);
+            let returnAddress : AddressDocument = await Address.create(addressModelSource);
+            address.id = returnAddress._id;
+            return address;
+
         }catch(error){
+            console.log(error);
             throw handleError(error);
         }
 

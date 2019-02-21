@@ -1,19 +1,31 @@
 import { Document, Schema, Model, model} from "mongoose";
-import IAddress from "../interface/Iaddress";
 
-export interface IAddressModel extends IAddress, Document {
-    createdAt    : Date,
-    updatedAt    : Date,
-    isUrban() : boolean
+export class AddressModel {
+  public countryName  : string = "";
+  public countryCode  : string = "";
+  public type         : string = "";
+
+  public streetName   : string   ="";
+  public streetNumber : number = 0;
+  public TownName     : string = "";
+  public postalCode   : number   = 0;
+
+  public village      :string = "";
+  public postOffice   :string = "";
+  public thana        :string = "";
+  public district     :string ="";
+
+}
+
+export interface AddressDocument extends AddressModel,Document{
+  createdAt?  : Date|null;
+  updatedAt?  : Date|null;
+  isUrban() : boolean;
 }
 
 
 var AddressSchema: Schema = new Schema({
     
-    _id          : {
-      type : String,
-      
-    },
     countryName : String,
     countryCode : String,
     type        : String,
@@ -29,7 +41,7 @@ var AddressSchema: Schema = new Schema({
     postalCode   : Number
 });
 
-AddressSchema.pre<IAddressModel>("save", function(next) {
+AddressSchema.pre<AddressDocument>("save", function(next) {
     let now = new Date();
     if (!this.createdAt) {
       this.createdAt = now;
@@ -37,7 +49,7 @@ AddressSchema.pre<IAddressModel>("save", function(next) {
     next();
 });
 
-AddressSchema.pre<IAddressModel>("update", function(next) {
+AddressSchema.pre<AddressDocument>("update", function(next) {
     let now = new Date();
     if (!this.updatedAt) {
       this.updatedAt = now;
@@ -49,4 +61,4 @@ AddressSchema.methods.isUrban = function():boolean{
     return this.type === 'urban';
 }
 
-export const Address: Model<IAddressModel> = model<IAddressModel>("Address", AddressSchema);
+export const Address: Model<AddressDocument> = model<AddressDocument>("Address", AddressSchema);
