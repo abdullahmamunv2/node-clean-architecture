@@ -1,6 +1,6 @@
-import {AddressCRUDInteractor} from './crud';
+import AddressReadInteractor from './read';
 
 
 export {
-    AddressCRUDInteractor
+    AddressReadInteractor
 }

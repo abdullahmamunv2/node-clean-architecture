@@ -1,5 +1,5 @@
-import {IAddressResCRUDMapper} from './IAddressResCRUDMapper'
+import IResposeReadMapper from './read'
 
 export {
-    IAddressResCRUDMapper
+    IResposeReadMapper
 }

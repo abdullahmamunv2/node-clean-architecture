@@ -1,6 +1,9 @@
 
-import * as AddressCRUD from './crud';
+import {CreateUrbanModel,CreateRuralModel}  from './create'
+import {ReadAddessModel}  from './read'
 
 export {
-    AddressCRUD
+    CreateRuralModel,
+    CreateUrbanModel,
+    ReadAddessModel
 }

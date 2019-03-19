@@ -27,11 +27,13 @@
     "morgan": "^1.9.1"
   },
   "_moduleAliases": {
-    "@root": "dist",
+    "@src" : "dist/app",
     "@core": "dist/core",
     "@adapter": "dist/adapter",
     "@db": "dist/infrastructure/persistance/db",
-    "@entity.gateway": "dist/infrastructure/persistance/entity.gateway"
+    "@infrastructure" : "dist/infrastructure",
+    "@entity.gateway": "dist/infrastructure/persistance/entity.gateway",
+    "@@mapperImpl": "dist/infrastructure/mapper"
   },
   "devDependencies": {
     "@types/mongodb": "^3.1.19",

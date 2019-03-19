@@ -1,8 +1,10 @@
 
-import * as Address from './address'
-import BaseRequst from './base'
+import IRequestModel from './IRequestModel'
+import RequestModel from './RequestModel'
+import RequestModelBody   from './RequestModelBody'
 
 export {
-    Address,
-    BaseRequst
+    IRequestModel,
+    RequestModel,
+    RequestModelBody
 }

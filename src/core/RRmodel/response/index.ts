@@ -1,8 +1,10 @@
 
-import * as Address from './address';
-import {BaseResponse} from './base';
+import IResponseModel from './IResponseModel'
+import ResponseModel from './ResponseModel'
+import ResponseModelBody   from './ResponseModelBody'
 
 export {
-    Address,
-    BaseResponse
+    IResponseModel,
+    ResponseModel,
+    ResponseModelBody
 }

@@ -7,6 +7,7 @@ import {
 
 import { handleError } from '@db/mongo'
 import { Address,AddressDocument,AddressModel } from '@db/mongo/schema'
+import { BaseAddress } from '@core/domain/entity';
 
 
 export default class AddressGateWay implements IEntityGateway.IAddressGateWay {
@@ -23,43 +24,26 @@ export default class AddressGateWay implements IEntityGateway.IAddressGateWay {
         .convertToType(Entity.UrbanAddress);
     }
     async get(id: string | number): Promise<Entity.BaseAddress> {
-        let address : AddressDocument | null=null;
+        console.log(id);
+        let addressDocument : AddressDocument | null=null;
         try{
-            address = await Address.findById(id);
+            addressDocument = await Address.findById(id);
         }catch(error){
             throw handleError(error);
         }
-        if(address == null){
+        if(addressDocument == null){
             throw new EntityException.NoResourceFoundError('Address not found',404);
         }
+        let addressModelSource : BaseAddress;
 
-        if(address.isUrban()){
-            let entityAddress         = new Entity.UrbanAddress();
-            entityAddress.id          = address._id;
-            entityAddress.countryName = address.countryName;
-            entityAddress.countryCode = address.countryCode;  
-            entityAddress.type        = address.type;
-
-            entityAddress.streetName  = address.streetName;
-            entityAddress.streetNumber= address.streetNumber;
-            entityAddress.TownName    = address.TownName;
-            entityAddress.postalCode  = address.postalCode;
-
-            return entityAddress;
-        }
+        if(addressDocument.isUrban()){
+            addressModelSource = automapper.map('AddressModel','UrbanAddress',addressDocument as AddressModel);
+        } 
         else{
-            let entityAddress         = new Entity.RuralAddress();
-            entityAddress.id          = address._id;
-            entityAddress.countryName = address.countryName;
-            entityAddress.countryCode = address.countryCode;  
-            entityAddress.type        = address.type;
-
-            entityAddress.village     = address.village;
-            entityAddress.postOffice  = address.postOffice;
-            entityAddress.thana       = address.thana;
-            entityAddress.district    = address.district;
-            return entityAddress;
+            addressModelSource = automapper.map('AddressModel','RuralAddress',addressDocument as AddressModel);
         }
+        addressModelSource.id = addressDocument.id;
+        return addressModelSource;
     }    
     getAll(query: IQuery): Promise<Entity.BaseAddress[]> {
         throw new Error("Method not implemented.");
@@ -78,7 +62,6 @@ export default class AddressGateWay implements IEntityGateway.IAddressGateWay {
             return address;
 
         }catch(error){
-            console.log(error);
             throw handleError(error);
         }
 

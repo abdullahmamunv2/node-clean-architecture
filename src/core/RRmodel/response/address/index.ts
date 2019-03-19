@@ -1,19 +1,13 @@
 import {
-    CreateModel,
-    UpdateModel,
-    DeleteModel,
-    ReadBaseModel,
-    ReadRuralModel,
-    ReadUrbanModel,
-    ReadAllModel
-} from './crud';
+    ReadAddressResponse,
+    ReadRuralAddressResponse,
+    ReadUrbanModelAddress,
+    ReadAllAddressResponse,
+} from './read';
 
 export {
-    CreateModel,
-    UpdateModel,
-    DeleteModel,
-    ReadBaseModel,
-    ReadRuralModel,
-    ReadUrbanModel,
-    ReadAllModel
+    ReadAddressResponse,
+    ReadRuralAddressResponse,
+    ReadUrbanModelAddress,
+    ReadAllAddressResponse,
 }

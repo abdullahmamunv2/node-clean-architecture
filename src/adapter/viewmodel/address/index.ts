@@ -1,5 +1,9 @@
-import {IAddressCRUDViewModel} from './IAddressCRUDViewModel'
+import {
+        ReadRuralAddressViewModel,
+        ReadUrbanAddressViewModel
+    } from './read'
 
 export {
-    IAddressCRUDViewModel
+    ReadRuralAddressViewModel,
+    ReadUrbanAddressViewModel
 }

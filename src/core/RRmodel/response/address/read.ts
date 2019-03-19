@@ -1,6 +1,7 @@
-import BaseRequest from "../base";
+import {ResponseModelBody} from "@core/RRmodel/response";
 
-export class CreateBaseModel extends BaseRequest {
+export  class ReadAddressResponse extends ResponseModelBody {
+    public id          : string|number='';
     public countryName : string = "Bangladesh";
     public countryCode : string = "BD";
     public type        : string = "";
@@ -8,9 +9,12 @@ export class CreateBaseModel extends BaseRequest {
         super();
         this.type = type;
     }
+    isUrban():boolean{
+        return this.type === 'urban';
+    }
 }
 
-export class CreateRuralModel extends CreateBaseModel{
+export class ReadRuralAddressResponse extends ReadAddressResponse{
     public village     : string ="";
     public postOffice  : string = "";
     public thana       : string = "";
@@ -21,7 +25,7 @@ export class CreateRuralModel extends CreateBaseModel{
     }
 }
 
-export class CreateUrbanModel extends CreateBaseModel{
+export class ReadUrbanModelAddress extends ReadAddressResponse{
     public streetName   : string   ="";
     public streetNumber : number = 0;
     public TownName     : string = "";
@@ -31,18 +35,8 @@ export class CreateUrbanModel extends CreateBaseModel{
     }
 }
 
-export class ReadModel extends BaseRequest {
-    
-}
-
-export class ReadAllModel extends BaseRequest {
-    
-}
-
-export class UpdateModel extends BaseRequest {
-
-}
-
-export class DeleteModel extends BaseRequest {
+export class ReadAllAddressResponse extends ResponseModelBody {
+    public page : number=1;
+    public limit : number=10;
     
 }
