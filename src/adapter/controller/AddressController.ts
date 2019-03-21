@@ -23,6 +23,11 @@ export class AddressController {
         let request = new RequestModel(body,res);
         return this.interactor.get(request);
     }
+
+    test(req : any,res : any) {
+        console.log(req.query);
+        res.json({ status: "success" , params : req.query });
+    }
     
 
 }

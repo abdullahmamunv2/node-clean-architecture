@@ -14,6 +14,9 @@ let mapper =  new AddressReadMapper();
 let addressGateway   = new AddressGateway();
 let controller = new AddressController(addressGateway,presenter,mapper);
 
-addressRouter.use('/:id',controller.get)
+addressRouter.get('/test/',controller.test.bind(controller))
+addressRouter.get('/:id',controller.get.bind(controller))
+
+
 
 export default addressRouter;

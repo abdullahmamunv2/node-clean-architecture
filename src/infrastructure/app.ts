@@ -2,8 +2,9 @@ import express, { Application }  from 'express';
 import morgan   from 'morgan';
 import {UrlBinder}  from './routers';
 
-const app : Application           = express();
 
+
+const app : Application           = express();
 
 
 // middleware
