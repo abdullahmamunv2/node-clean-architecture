@@ -4,7 +4,6 @@ import {
    } from '@core/domain'
 import { IResponseModel } from '@core/RRmodel/response';
 
-export default interface IResposeReadMapper{
+export default interface IReadAdddressResposeMapper{
     read(param :Entity.BaseAddress)   : IResponseModel
-    readAll(param:Entity.BaseAddress[]):IResponseModel
 }

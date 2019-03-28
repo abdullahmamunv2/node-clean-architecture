@@ -1,5 +1,5 @@
-import {IAddressReadInteractor} from './read'
+import {IReadAddressInteractor} from './read'
 
 export {
-    IAddressReadInteractor
+    IReadAddressInteractor
 }

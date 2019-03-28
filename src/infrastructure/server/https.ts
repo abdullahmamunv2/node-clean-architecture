@@ -30,7 +30,7 @@ export default class HttpServer extends EventEmitter implements Iserver{
                 reject(error);
             }
             else{
-                this.server.listen(this.port,()=>{
+                this.server.listen(this.port,this.host,()=>{
                     resolve(true);
                 })
 

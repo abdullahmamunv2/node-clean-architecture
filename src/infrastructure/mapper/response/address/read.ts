@@ -1,12 +1,14 @@
 import 'automapper-ts/dist/automapper';
-import {IResposeReadMapper} from '@core/mapper/response/address'
+import { injectable, inject } from "inversify";
+import {IReadAdddressResposeMapper} from '@core/mapper/response/address'
 import {
     Entity
    } from '@core/domain'
 import { IResponseModel } from '@core/RRmodel/response';
 import { ReadUrbanModelAddress,ReadRuralAddressResponse } from '@core/RRmodel/response/address';
 
-export default class AddressReadMapper implements IResposeReadMapper{
+@injectable()
+export default class ReadAddressResponseMapper implements IReadAdddressResposeMapper{
     
     constructor(){
         automapper.createMap('BaseAddress', 'ReadRuralModel')
@@ -20,9 +22,5 @@ export default class AddressReadMapper implements IResposeReadMapper{
             return automapper.map('BaseAddress', 'ReadUrbanModel',param);
         else
             return automapper.map('BaseAddress', 'ReadRuralModel',param);
-    }
-
-    readAll(param: Entity.BaseAddress[]): IResponseModel {
-        throw new Error("Method not implemented.");
     }
 }

@@ -2,7 +2,6 @@ import {Error} from "mongoose";
 import {
     EntityException
     } from '@core/domain'
-import { UnKnownError } from "core/domain/entity.exception";
 
 export default  (error : Error)=>{
     if(error instanceof Error.DocumentNotFoundError){

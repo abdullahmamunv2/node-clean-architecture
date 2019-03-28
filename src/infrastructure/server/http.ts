@@ -30,7 +30,7 @@ export default class HttpServer extends EventEmitter implements Iserver{
                 reject(error);
             }
             else{
-                this.server.listen(this.port,()=>{
+                this.server.listen(this.port,this.host,()=>{
                     resolve(true);
                 })
 
@@ -55,7 +55,7 @@ export default class HttpServer extends EventEmitter implements Iserver{
     stop(): Promise<boolean | Error> {
         return new Promise((resolve,reject)=>{
             if(this.server === null){
-                let error = new ServerError('Server is not created.','ERR_SERVER_UNINITIALIZED');
+                let error = new ServerError('Server  not created.','ERR_SERVER_UNINITIALIZED');
                 reject(error);
             }
             else{
@@ -80,7 +80,6 @@ export default class HttpServer extends EventEmitter implements Iserver{
             }
             else{
                 return this.stop().then(()=>{
-                    this.server = null;
                     return this.start();
                 })
             }

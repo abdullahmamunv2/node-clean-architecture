@@ -1,6 +1,6 @@
 
-import AddressReadPresenter from './AddressReadPresenter';
+import ReadAddressPresenter from './ReadAddressPresenter';
 
 export {
-    AddressReadPresenter
+    ReadAddressPresenter
 }

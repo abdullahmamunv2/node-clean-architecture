@@ -1,5 +1,5 @@
-import {IAddressReadPresenter} from './read'
+import {IReadAddressPresenter} from './read'
 
 export {
-    IAddressReadPresenter
+    IReadAddressPresenter
 }

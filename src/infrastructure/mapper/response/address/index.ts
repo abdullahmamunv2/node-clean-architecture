@@ -1,5 +1,5 @@
-import AddressReadMapper from './read'
+import ReadAddressResponseMapper from './read'
 
 export {
-    AddressReadMapper
+    ReadAddressResponseMapper
 }

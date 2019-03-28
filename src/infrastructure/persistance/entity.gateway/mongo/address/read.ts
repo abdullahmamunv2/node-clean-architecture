@@ -1,16 +1,20 @@
 import 'automapper-ts/dist/automapper';
+const mongoose = require('mongoose');
+import { injectable, inject } from "inversify";
+import "reflect-metadata";
 import {
-    IEntityGateway,
     Entity,
     EntityException,
     IQuery} from '@core/domain'
+
+import {IReadAddressGateWay} from '@core/domain/entity.gateway/address'
 
 import { handleError } from '@db/mongo'
 import { Address,AddressDocument,AddressModel } from '@db/mongo/schema'
 import { BaseAddress } from '@core/domain/entity';
 
-
-export default class AddressGateWay implements IEntityGateway.IAddressGateWay {
+@injectable()
+export default class ReadAddressGateWay implements IReadAddressGateWay {
     constructor(){
         automapper.createMap('UrbanAddress', 'AddressModel')
                   .convertToType(AddressModel);
@@ -24,11 +28,17 @@ export default class AddressGateWay implements IEntityGateway.IAddressGateWay {
         .convertToType(Entity.UrbanAddress);
     }
     async get(id: string | number): Promise<Entity.BaseAddress> {
-        console.log(id);
+
+        if(!mongoose.Types.ObjectId.isValid(id)) {
+            console.log('invalid id')
+        }
+        
         let addressDocument : AddressDocument | null=null;
         try{
             addressDocument = await Address.findById(id);
+            
         }catch(error){
+            //console.log(error);
             throw handleError(error);
         }
         if(addressDocument == null){
@@ -45,9 +55,6 @@ export default class AddressGateWay implements IEntityGateway.IAddressGateWay {
         addressModelSource.id = addressDocument.id;
         return addressModelSource;
     }    
-    getAll(query: IQuery): Promise<Entity.BaseAddress[]> {
-        throw new Error("Method not implemented.");
-    }
     async create(address: Entity.BaseAddress): Promise<Entity.BaseAddress> {
         let addressModelSource : AddressModel;
         if(address.isUrban()){

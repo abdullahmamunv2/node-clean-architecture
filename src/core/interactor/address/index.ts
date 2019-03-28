@@ -1,6 +1,6 @@
-import AddressReadInteractor from './read';
+import ReadAddressInteractor from './read';
 
 
 export {
-    AddressReadInteractor
+    ReadAddressInteractor
 }

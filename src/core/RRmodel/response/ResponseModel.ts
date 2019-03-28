@@ -22,7 +22,6 @@ export default class ResponseModel implements IResponseModel {
     }
     hasError(): boolean {
         return this.error !=null;
-        
     }
     
 }

@@ -14,11 +14,15 @@ const path = require("path");
 let dbConfig     = config.get('mongodb');
 let serverConfig = config.get('server');
 
-let server : IServer = new HttpServer(serverConfig.host,serverConfig.port,app);
+let server : IServer = new HttpServer(serverConfig.host,serverConfig.port.http,app);
 
 client.initConnection(dbConfig.uri,dbConfig.options).then(()=>{
     return server.start();
-}).catch((error : Error)=>{
+}).
+then(()=>{
+    console.log('server started.');
+}).
+catch((error : Error)=>{
     console.log(error);
 })
 

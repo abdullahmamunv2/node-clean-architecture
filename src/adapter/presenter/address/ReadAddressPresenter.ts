@@ -4,12 +4,15 @@ import { ReadRuralAddressViewModel,
         }    from '@adapter/viewmodel/address'
 import {IResponseModel} from '@core/RRmodel/response'
 import {
-        ReadAddressResponse,
-        ReadRuralAddressResponse,
-        ReadUrbanModelAddress} from '@core/RRmodel/response/address'
-import {IAddressReadPresenter} from '@core/io.port/output/address'
+        ReadAddressResponse} from '@core/RRmodel/response/address'
+import {IReadAddressPresenter} from '@core/io.port/output/address'
 
-export default class AddressReadPresenter implements IAddressReadPresenter{
+import { injectable, inject } from "inversify";
+import "reflect-metadata";
+
+
+@injectable()
+export default class ReadAddressPresenter implements IReadAddressPresenter{
 
     constructor(){
         automapper.createMap('ReadRuralAddressResponse', 'ReadRuralAddressViewModel')
