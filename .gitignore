@@ -1,4 +1,5 @@
-!config/default.json
 node_modules
-config
+config/production.json
+config/development.json
 dist/*
+package-lock.json

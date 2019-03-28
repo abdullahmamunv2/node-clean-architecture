@@ -1,0 +1,5 @@
+{
+    "msdatabase" : {
+        "password":"DATABASE_PASS"
+    }
+}
