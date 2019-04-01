@@ -1,14 +1,17 @@
 import 'automapper-ts/dist/automapper';
-import { injectable, inject } from "inversify";
-import {IReadAdddressResposeMapper} from '@core/mapper/response/address'
+import { injectable } from "inversify";
+import {IResponseMapper} from '@core/mapper'
 import {
     Entity
    } from '@core/domain'
-import { IResponseModel } from '@core/RRmodel/response';
-import { ReadUrbanModelAddress,ReadRuralAddressResponse } from '@core/RRmodel/response/address';
+import { 
+    ReadAddressResponse,
+    ReadRuralAddressResponse,
+    ReadUrbanModelAddress } from '@core/RRmodel/response/address';
+import { BaseAddress } from '@core/domain/entity';
 
 @injectable()
-export default class ReadAddressResponseMapper implements IReadAdddressResposeMapper{
+export default class ReadAddressResponseMapper implements IResponseMapper<BaseAddress,ReadAddressResponse>{
     
     constructor(){
         automapper.createMap('BaseAddress', 'ReadRuralModel')
@@ -17,7 +20,7 @@ export default class ReadAddressResponseMapper implements IReadAdddressResposeMa
         automapper.createMap('BaseAddress', 'ReadUrbanModel')
                   .convertToType(ReadUrbanModelAddress);
     }
-    read(param: Entity.BaseAddress): IResponseModel {
+    map(param: Entity.BaseAddress): ReadUrbanModelAddress {
         if(param.isUrban())
             return automapper.map('BaseAddress', 'ReadUrbanModel',param);
         else

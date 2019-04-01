@@ -1,7 +1,5 @@
-import ResponseModelBody from './ResponseModelBody';
+import IOutputResponseModel from "./IOutputResponseModel";
 
-export default interface IResponseModel{
-    getBody()   : ResponseModelBody;
-    getOutputApi() : any;
-    hasError() : boolean;
+export default interface IResponseModel<T> extends IOutputResponseModel{
+    getBody()   : T;
 }

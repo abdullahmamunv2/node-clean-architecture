@@ -12,12 +12,14 @@ import {IReadAddressPresenter} from '@core/io.port/output/address'
 import IRequest from '@core/RRmodel/request/IRequestModel';
 import { ReadAddessModel } from '@core/RRmodel/request/address';
 import { IResponseModel, ResponseModel } from '@core/RRmodel/response';
-import { IReadAdddressResposeMapper } from '@core/mapper/response/address';
+import { ReadAddressResponse } from '@core/RRmodel/response/address';
+import { IResponseMapper } from '@core/mapper';
 import { IReadValidatorGateway } from '@core/validator/gateway/address';
 
 import {TYPES}  from  '@ioc'
 import { injectable, inject } from "inversify";
 import "reflect-metadata";
+import { BaseAddress } from '@core/domain/entity';
 
 console.log(TYPES);
 
@@ -26,12 +28,12 @@ export default class ReadAddressInteractor implements IReadAddressInteractor {
 
 entityGateway       : IReadAddressGateWay;
 outputPort          : IReadAddressPresenter;
-mapper              : IReadAdddressResposeMapper;
+mapper              : IResponseMapper<BaseAddress,ReadAddressResponse>;
 validatorGateway    : IReadValidatorGateway;
 constructor(
             @inject(TYPES.ReadAddressGateway) entityGateway : IReadAddressGateWay,
             @inject(TYPES.ReadAddressPresenter) outputPort    : IReadAddressPresenter,
-            @inject(TYPES.ReadAdddressResposeMapper) mapper        : IReadAdddressResposeMapper,
+            @inject(TYPES.ReadAdddressResposeMapper) mapper        : IResponseMapper<BaseAddress,ReadAddressResponse>,
             @inject(TYPES.ReadValidatorGateway)validatorGateway : IReadValidatorGateway){
 
                 this.entityGateway      = entityGateway;
@@ -50,10 +52,9 @@ async get(req:IRequest): Promise<any> {
         }
         else{
             let address : Entity.BaseAddress = await this.entityGateway.get(body.id);
-            let responseBody   = this.mapper.read(address);
-            let response : IResponseModel  = new ResponseModel(responseBody,req.getOutputApi());
-            console.log(response);
-            this.outputPort.presentReadAddress(response);
+            let response   = this.mapper.map(address);
+            let output  : IResponseModel<ReadAddressResponse> = new ResponseModel<ReadAddressResponse>(response,req.getOutputApi())
+            this.outputPort.presentReadAddress(output);
             return Promise.resolve();
         }
         

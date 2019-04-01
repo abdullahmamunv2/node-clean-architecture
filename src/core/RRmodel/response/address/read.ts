@@ -1,12 +1,9 @@
-import {ResponseModelBody} from "@core/RRmodel/response";
-
-export  class ReadAddressResponse extends ResponseModelBody {
+export  class ReadAddressResponse {
     public id          : string|number='';
     public countryName : string = "Bangladesh";
     public countryCode : string = "BD";
     public type        : string = "";
     constructor(type:string){
-        super();
         this.type = type;
     }
     isUrban():boolean{
@@ -35,8 +32,7 @@ export class ReadUrbanModelAddress extends ReadAddressResponse{
     }
 }
 
-export class ReadAllAddressResponse extends ResponseModelBody {
+export class ReadAllAddressResponse {
     public page : number=1;
     public limit : number=10;
-    
 }

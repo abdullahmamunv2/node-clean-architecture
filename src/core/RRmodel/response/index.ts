@@ -1,10 +1,12 @@
 
 import IResponseModel from './IResponseModel'
 import ResponseModel from './ResponseModel'
-import ResponseModelBody   from './ResponseModelBody'
+import IOutputResponseModel from './IOutputResponseModel'
+import OutputResponseModel from './OutputResponseModel'
 
 export {
     IResponseModel,
     ResponseModel,
-    ResponseModelBody
+    IOutputResponseModel,
+    OutputResponseModel
 }

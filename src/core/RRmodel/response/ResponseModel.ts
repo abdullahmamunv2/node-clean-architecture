@@ -1,27 +1,16 @@
-import IResponseModel from "./IResponseModel";
-import ResponseModelBody from './ResponseModelBody';
-import ErrorBody from './ErrorBody'
+import { IResponseModel } from ".";
 
-export default class ResponseModel implements IResponseModel {
-    
-    
-    
-    private outputApi: any;    
-    private body: ResponseModelBody;
-    error  : ErrorBody|null = null;
-
-    constructor(body : ResponseModelBody,outputApi:any){
-        this.outputApi = outputApi;
+export default class ResponseModel<T> implements IResponseModel<T>{
+    private body : T;
+    private outputApi:any;
+    constructor(body:T,outputApi : any){
         this.body = body;
+        this.outputApi = outputApi
     }
-    getBody(): ResponseModelBody {
+    getBody() : T {
         return this.body;
-    }
-    getOutputApi() {
+    }    
+    getOutputApi():any {
         return this.outputApi;
     }
-    hasError(): boolean {
-        return this.error !=null;
-    }
-    
 }
