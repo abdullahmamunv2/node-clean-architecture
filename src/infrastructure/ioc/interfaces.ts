@@ -1,14 +1,14 @@
 import { IReadAddressGateWay } from '@core/domain/entity.gateway/address'
-import {IReadAddressInteractor} from '@core/io.port/input/address'
-import {IReadAddressPresenter} from '@core/io.port/output/address'
 import { IReadValidatorGateway } from '@core/validator/gateway/address';
 import { IResponseMapper } from '@core/mapper';
 import {IValidationErrorParser} from "@core/validator";
+import IInteractor from '@core/io.port/input';
+import {IPresenter} from '@core/io.port/output';
 
 export {
     IReadAddressGateWay,
-    IReadAddressInteractor,
-    IReadAddressPresenter,
+    IInteractor,
+    IPresenter,
     IReadValidatorGateway,
     IResponseMapper,
     IValidationErrorParser

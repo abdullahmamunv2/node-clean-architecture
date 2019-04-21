@@ -6,33 +6,30 @@ import {
     IReadAddressGateWay
 }                               from '@core/domain/entity.gateway/address'
 
-import {IReadAddressInteractor} from '@core/io.port/input/address'
-import {IReadAddressPresenter} from '@core/io.port/output/address'
 
-import IRequest from '@core/RRmodel/request/IRequestModel';
 import { ReadAddessModel } from '@core/RRmodel/request/address';
-import { IResponseModel, ResponseModel } from '@core/RRmodel/response';
 import { ReadAddressResponse } from '@core/RRmodel/response/address';
 import { IResponseMapper } from '@core/mapper';
 import { IReadValidatorGateway } from '@core/validator/gateway/address';
 
 import {TYPES}  from  '@ioc'
 import { injectable, inject } from "inversify";
-import "reflect-metadata";
 import { BaseAddress } from '@core/domain/entity';
-
-console.log(TYPES);
+import IRequest from '@core/io.port/input';
+import {IPresenter} from '@core/io.port/output';
+import { ErrorResponse } from '@core/exceptions';
+import ValidationError from '@core/exceptions/ValidatorError';
 
 @injectable()
-export default class ReadAddressInteractor implements IReadAddressInteractor {
+export default class ReadAddressInteractor implements IRequest<ReadAddessModel> {
 
 entityGateway       : IReadAddressGateWay;
-outputPort          : IReadAddressPresenter;
+outputPort          : IPresenter<ReadAddressResponse,ErrorResponse<ValidationError>>;
 mapper              : IResponseMapper<BaseAddress,ReadAddressResponse>;
 validatorGateway    : IReadValidatorGateway;
 constructor(
             @inject(TYPES.ReadAddressGateway) entityGateway : IReadAddressGateWay,
-            @inject(TYPES.ReadAddressPresenter) outputPort    : IReadAddressPresenter,
+            @inject(TYPES.ReadAddressPresenter) outputPort    : IPresenter<ReadAddressResponse,ErrorResponse<ValidationError>>,
             @inject(TYPES.ReadAdddressResposeMapper) mapper        : IResponseMapper<BaseAddress,ReadAddressResponse>,
             @inject(TYPES.ReadValidatorGateway)validatorGateway : IReadValidatorGateway){
 
@@ -42,38 +39,26 @@ constructor(
                 this.validatorGateway   = validatorGateway;
 }
 
-async get(req:IRequest): Promise<any> {
+async execute(request:ReadAddessModel,callback : (param : any) => void): Promise<any> {
     try {
-        
-        let body = req.getBody() as ReadAddessModel;
-        let validatorResponse = await this.validatorGateway.validate(body);
+
+        let validatorResponse = await this.validatorGateway.validate(request);
+        console.log(validatorResponse);
         if(validatorResponse.hasError()){
-            console.log(validatorResponse.getErrros());
-        }
-        else{
-            let address : Entity.BaseAddress = await this.entityGateway.get(body.id);
-            let response   = this.mapper.map(address);
-            let output  : IResponseModel<ReadAddressResponse> = new ResponseModel<ReadAddressResponse>(response,req.getOutputApi())
-            this.outputPort.presentReadAddress(output);
+            
+            console.log(validatorResponse.getResponse());
+            callback(validatorResponse.getResponse());
             return Promise.resolve();
         }
+        let address : Entity.BaseAddress = await this.entityGateway.get(request.id);
+        let response   = this.mapper.map(address);
+        this.outputPort.present(response,callback);
+        
         
     }catch(err){
-        //console.log(err.message);
-        return Promise.reject(err);
+
     }
+    return Promise.resolve();
 }
-
-async getAll(req:IRequest): Promise<any> {
-    throw new Error("Method not implemented.");
-    /*try {
-        let address : Entity.BaseAddress[] = await this.entityGateway.getAll(query);
-        return Promise.resolve();
-    }catch(err){
-        return Promise.reject();
-    }*/
-}
-
-
 
 }

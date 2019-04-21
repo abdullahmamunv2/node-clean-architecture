@@ -1,18 +1,21 @@
 
 import { ReadRuralAddressViewModel,
-        ReadUrbanAddressViewModel
+        ReadUrbanAddressViewModel,
+        AddressViewModel
         }    from '@adapter/viewmodel/address'
-import {IResponseModel} from '@core/RRmodel/response'
 import {
         ReadAddressResponse} from '@core/RRmodel/response/address'
-import {IReadAddressPresenter} from '@core/io.port/output/address'
 
 import { injectable } from "inversify";
+import {IPresenter, IErrorPresenter} from '@core/io.port/output';
+import { ErrorResponse } from '@core/exceptions';
+import { ValidationError } from '@infrastructure/ioc/entities';
 
 
 @injectable()
-export default class ReadAddressPresenter implements IReadAddressPresenter{
-
+export default class ReadAddressPresenter implements IPresenter<ReadAddressResponse,ErrorResponse<ValidationError>>{
+    viewmodel:AddressViewModel|null=null;
+    
     constructor(){
         automapper.createMap('ReadRuralAddressResponse', 'ReadRuralAddressViewModel')
                   .convertToType(ReadRuralAddressViewModel);
@@ -20,21 +23,24 @@ export default class ReadAddressPresenter implements IReadAddressPresenter{
         automapper.createMap('ReadUrbanModelAddress', 'ReadUrbanAddressViewModel')
                   .convertToType(ReadUrbanAddressViewModel);
     }
-    presentReadAddress(response: IResponseModel<ReadAddressResponse>): void {
-        let body = response.getBody();
-        if(body.isUrban()){
-            let viewmodel : ReadUrbanAddressViewModel = automapper.map(
+    present(response: ReadAddressResponse,callback : (param : any) => void): Promise<any> {
+        console.log(typeof response);
+        console.log(Object.keys(response));
+        if(response.isUrban()){
+            this.viewmodel = automapper.map(
                                                             'ReadUrbanModelAddress',
                                                             'ReadUrbanAddressViewModel',
-                                                            body);
-            response.getOutputApi().send(viewmodel);
+                                                            response);
         }
         else{
-            let viewmodel : ReadRuralAddressViewModel = automapper.map(
+            this.viewmodel = automapper.map(
                                                             'ReadRuralAddressResponse',
                                                             'ReadRuralAddressViewModel',
-                                                            body);
-            response.getOutputApi().send(viewmodel);
+                                                            response);
         }
+        
+        callback(this.viewmodel);
+
+        return Promise.resolve();
     }
 }

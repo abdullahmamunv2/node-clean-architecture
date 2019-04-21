@@ -1,25 +1,24 @@
-import {IReadAddressInteractor} from '@core/io.port/input/address'
 import { ReadAddessModel } from '@core/RRmodel/request/address/';
-import { RequestModel } from '@core/RRmodel/request';
-import {IOContainer,TYPES}  from  '@ioc'
+import {TYPES}  from  '@ioc'
 import { injectable, inject } from "inversify";
 import "reflect-metadata";
+import IInteractor from '@core/io.port/input';
 
 
 @injectable()
 export class ReadAddressController {
-    interactor : IReadAddressInteractor; 
-    constructor(@inject(TYPES.ReadAddressInteractor) interactor   : IReadAddressInteractor){
+    interactor : IInteractor<ReadAddessModel>; 
+    constructor(@inject(TYPES.ReadAddressInteractor) interactor   : IInteractor<ReadAddessModel>){
         this.interactor = interactor;
     }
     async get(req : any,res : any): Promise<any> {
-        
         let id = req.params.id;
-        console.log('id : ',id);
-        console.log(id);
-        let body = new ReadAddessModel(id);
-        let request = new RequestModel(body,res);
-        return this.interactor.get(request);
+        let request = new ReadAddessModel(id);
+        return this.interactor.execute(request,(viewModel:any)=>{
+            console.log(viewModel);
+            res.send(viewModel);
+        });
+        
     }
 
     test(req : any,res : any) {

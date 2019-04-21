@@ -1,4 +1,4 @@
-import {ValidationError,ValidatorResponse,IValidatorResponse} from "@core/validator/";
+import {ValidatorResponse,IValidatorResponse} from "@core/validator/";
 import {ReadAddessModel} from '@core/RRmodel/request/address';
 import {IReadValidatorGateway} from "@core/validator/gateway/address";
 import * as Joi from 'joi';
@@ -6,6 +6,9 @@ import {IValidationErrorParser} from "@core/validator";
 import {TYPES} from '@ioc'
 import { injectable, inject } from "inversify";
 import "reflect-metadata";
+import ValidationError from "@core/exceptions/ValidatorError";
+import ResponseError from "@core/exceptions/ErrorResponse";
+import { ERROR_TYPE } from "@core/exceptions";
 
 
 
@@ -16,9 +19,9 @@ const schema : Joi.Schema = Joi.object({
 
 @injectable()
 export default class ReadValidatorGateway implements IReadValidatorGateway{
-    errorGenerator : IValidationErrorParser<any,ValidationError>;
+    errorGenerator : IValidationErrorParser;
     constructor(
-                @inject(TYPES.ValidationErrorParser) errorGenerator : IValidationErrorParser<any,ValidationError>
+                @inject(TYPES.ValidationErrorParser) errorGenerator : IValidationErrorParser
                 ){
         this.errorGenerator = errorGenerator
     }
@@ -29,9 +32,9 @@ export default class ReadValidatorGateway implements IReadValidatorGateway{
         }catch(error){
             errors = this.errorGenerator.generate(error);
         }
-
-        let response = new ValidatorResponse(errors);
+        let errorResponse   = new ResponseError<ValidationError>(ERROR_TYPE.VALIDATION_ERROR,errors);
         
+        let response = new ValidatorResponse(errorResponse);
         return response;
         
     }

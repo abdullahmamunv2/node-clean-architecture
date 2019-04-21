@@ -5,7 +5,9 @@ import {ReadAddressPresenter} from '@adapter/presenter/address'
 import { ReadValidatorGateway } from '@infrastructure/validator/gateway/address';
 import { ReadAddressResponseMapper } from '@infrastructure/mapper/response/address';
 import {JoiErrorParser} from "@infrastructure/validator/error.parser";
-import {ValidationError} from "@core/validator"
+import { ReadAddessModel } from '@core/RRmodel/request/address/';
+import {ReadAddressResponse} from '@core/RRmodel/response/address'
+import ValidationError from '@core/exceptions/ValidatorError';
 
 export {
     ReadAddressGateWay,
@@ -15,5 +17,7 @@ export {
     ReadValidatorGateway,
     ReadAddressResponseMapper,
     JoiErrorParser,
-    ValidationError
+    ValidationError,
+    ReadAddessModel,
+    ReadAddressResponse
 }

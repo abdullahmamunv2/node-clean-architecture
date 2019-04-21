@@ -1,10 +1,9 @@
-import {RequestModelBody} from "@core/RRmodel/request";
-export class CreateAddessModel extends RequestModelBody {
+
+export class CreateAddessModel {
     public countryName : string = "Bangladesh";
     public countryCode : string = "BD";
     public type        : string = "";
     constructor(type:string){
-        super();
         this.type = type;
     }
 }
