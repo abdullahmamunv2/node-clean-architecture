@@ -14,7 +14,7 @@ export default class ValidatorResponse implements IValidatorResponse{
     hasError(): boolean {
         if(!this.errorResponse)
             return false;
-        return this.errorResponse.hasError() ;
+        return this.errorResponse.hasError();
     }
 
     

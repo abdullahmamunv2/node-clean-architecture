@@ -1,3 +1,3 @@
 export default interface IErrorPresenter<T> {
-    presentError(response:T) : Promise<any>;
+    present(response:T,callback : (param : any) => void) : void;
 }

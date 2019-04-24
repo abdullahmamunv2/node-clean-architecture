@@ -1,3 +1,3 @@
-import IInteractor from './IInteractor';
+import Interactor from './Interactor';
 
-export default IInteractor;
+export default Interactor;

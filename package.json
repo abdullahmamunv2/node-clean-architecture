@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "pretest": "eslint --ignore-path .gitignore .",
     "dev-watch": "./node_modules/.bin/tsc -w",
     "build": "./node_modules/.bin/tsc && mkdir -p ./dist/infrastructure/cert/ && cp -R ./src/infrastructure/cert ./dist/infrastructure/cert/",
     "clean": "rm -r dist",
@@ -26,6 +27,7 @@
     "express": "^4.16.4",
     "inversify": "^3.3.0",
     "joi": "^14.3.1",
+    "jsonschema": "^1.2.4",
     "module-alias": "^2.2.0",
     "mongoose": "^5.4.13",
     "morgan": "^1.9.1",
@@ -40,7 +42,7 @@
     "@infrastructure": "dist/infrastructure",
     "@entity.gateway": "dist/infrastructure/persistance/entity.gateway",
     "@@mapperImpl": "dist/infrastructure/mapper",
-    "@ioc" : "dist/infrastructure/ioc"
+    "@ioc": "dist/infrastructure/ioc"
   },
   "devDependencies": {
     "@types/cors": "^2.8.4",
@@ -50,6 +52,8 @@
     "@types/mongoose": "^5.3.17",
     "@types/morgan": "^1.7.35",
     "@types/node": "^11.11.4",
+    "eslint": "^5.16.0",
+    "eslint-plugin-security": "^1.4.0",
     "nodemon": "^1.18.10",
     "typescript": "^3.3.4000"
   }

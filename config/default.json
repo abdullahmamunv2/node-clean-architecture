@@ -1,15 +1,12 @@
 {
     "server" : {
-        "host":"192.168.7.163",
-        "port":"3000"
+        "protocol" : ["http","https"]
     },
     "mongodb" : {
-        "uri"     : "mongodb://{host}:{port}/{databaseName}",
         "options" : {
             "useNewUrlParser": true,
             "bufferCommands"    : true,
             "autoIndex"         : true,
-            "dbName"            : "{databaseName}",
             "autoReconnect"     : true,
             "reconnectInterval" : 2000,
             "poolSize"          : 10,

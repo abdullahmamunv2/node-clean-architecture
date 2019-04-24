@@ -1,5 +1,5 @@
 import 'automapper-ts/dist/automapper';
-import { injectable } from "inversify";
+import { injectable } from "@core/di";
 import {IResponseMapper} from '@core/mapper'
 import {
     Entity

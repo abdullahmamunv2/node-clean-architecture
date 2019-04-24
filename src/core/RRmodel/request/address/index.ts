@@ -1,9 +1,9 @@
 
 import {CreateUrbanModel,CreateRuralModel}  from './create'
-import {ReadAddessModel}  from './read'
+import {ReadAddessRequest}  from './read'
 
 export {
     CreateRuralModel,
     CreateUrbanModel,
-    ReadAddessModel
+    ReadAddessRequest
 }

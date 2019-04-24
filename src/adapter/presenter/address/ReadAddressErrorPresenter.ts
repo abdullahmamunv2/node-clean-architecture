@@ -6,7 +6,7 @@ import { ReadRuralAddressViewModel,
 import {
     ReadAddressResponse} from '@core/RRmodel/response/address'
 
-import { injectable } from "inversify";
+import { injectable } from "@core/di";
 import {IPresenter, IErrorPresenter} from '@core/io.port/output';
 import { ErrorResponse } from '@core/exceptions';
 import { ValidationError } from '@infrastructure/ioc/entities';
@@ -24,8 +24,6 @@ constructor(){
               .convertToType(ReadUrbanAddressViewModel);
 }
 present(response: ReadAddressResponse,callback : (param : any) => void): Promise<any> {
-    console.log(typeof response);
-    console.log(Object.keys(response));
     if(response.isUrban()){
         this.viewmodel = automapper.map(
                                                         'ReadUrbanModelAddress',

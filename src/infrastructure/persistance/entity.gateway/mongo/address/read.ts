@@ -1,21 +1,30 @@
 import 'automapper-ts/dist/automapper';
 const mongoose = require('mongoose');
-import { injectable, inject } from "inversify";
+import { injectable, inject } from "@core/di";
 import "reflect-metadata";
 import {
     Entity,
     EntityException,
     IQuery} from '@core/domain'
 
+import {TYPES} from '@ioc'
+
 import {IReadAddressGateWay} from '@core/domain/entity.gateway/address'
 
 import { handleError } from '@db/mongo'
 import { Address,AddressDocument,AddressModel } from '@db/mongo/schema'
 import { BaseAddress } from '@core/domain/entity';
+import { IEntityGatewayErrorParser, EntityGatewayResponse } from '@core/domain/entity.gateway';
+import { ERROR_TYPE, EntityGatewayError } from '@core/exceptions';
+import ResponseError from '@core/exceptions/ErrorResponse';
 
 @injectable()
 export default class ReadAddressGateWay implements IReadAddressGateWay {
-    constructor(){
+    private errorParser : IEntityGatewayErrorParser;
+    constructor(
+        @inject(TYPES.MongoErrorParser)  errorParser : IEntityGatewayErrorParser
+        ){
+            this.errorParser = errorParser;
         automapper.createMap('UrbanAddress', 'AddressModel')
                   .convertToType(AddressModel);
         
@@ -28,21 +37,18 @@ export default class ReadAddressGateWay implements IReadAddressGateWay {
         .convertToType(Entity.UrbanAddress);
     }
     async get(id: string | number): Promise<Entity.BaseAddress> {
-
-        if(!mongoose.Types.ObjectId.isValid(id)) {
-            console.log('invalid id')
-        }
         
         let addressDocument : AddressDocument | null=null;
         try{
             addressDocument = await Address.findById(id);
-            
         }catch(error){
-            //console.log(error);
-            throw handleError(error);
+            let errors = this.errorParser.generate(error);
+            let errorResponse   = new ResponseError<EntityGatewayError>(ERROR_TYPE.INTERNAL_SERVER_ERROR,this.errorParser.generate(errors));
+            throw new EntityGatewayResponse(errorResponse);
         }
         if(addressDocument == null){
-            throw new EntityException.NoResourceFoundError('Address not found',404);
+            let errorResponse   = new ResponseError<EntityGatewayError>(ERROR_TYPE.NO_DATA_FOUND);
+            throw new EntityGatewayResponse(errorResponse);
         }
         let addressModelSource : BaseAddress;
 
@@ -72,12 +78,6 @@ export default class ReadAddressGateWay implements IReadAddressGateWay {
             throw handleError(error);
         }
 
-    }
-    update(address: Entity.BaseAddress): Promise<Entity.BaseAddress> {
-        throw new Error("Method not implemented.");
-    }
-    remove(id: number): Promise<boolean> {
-        throw new Error("Method not implemented.");
     }
 
 

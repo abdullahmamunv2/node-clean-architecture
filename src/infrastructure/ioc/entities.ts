@@ -4,10 +4,14 @@ import {ReadAddressController} from '@adapter/controller/address'
 import {ReadAddressPresenter} from '@adapter/presenter/address'
 import { ReadValidatorGateway } from '@infrastructure/validator/gateway/address';
 import { ReadAddressResponseMapper } from '@infrastructure/mapper/response/address';
-import {JoiErrorParser} from "@infrastructure/validator/error.parser";
-import { ReadAddessModel } from '@core/RRmodel/request/address/';
+import {JoiErrorParser,JsonSchemaErrorParser} from "@infrastructure/validator/error.parser";
+import {MongoErrorParser} from '@infrastructure/persistance/entity.gateway/error.parser';
+import { ReadAddessRequest } from '@core/RRmodel/request/address/';
 import {ReadAddressResponse} from '@core/RRmodel/response/address'
 import ValidationError from '@core/exceptions/ValidatorError';
+import {JoiValidatorGateway,
+    JsonSchemaValidatorGateway} from '@infrastructure/validator/gateway'
+import * as Joi from 'joi';
 
 export {
     ReadAddressGateWay,
@@ -17,7 +21,12 @@ export {
     ReadValidatorGateway,
     ReadAddressResponseMapper,
     JoiErrorParser,
+    JsonSchemaErrorParser,
+    MongoErrorParser,
     ValidationError,
-    ReadAddessModel,
-    ReadAddressResponse
+    ReadAddessRequest,
+    ReadAddressResponse,
+    JoiValidatorGateway,
+    JsonSchemaValidatorGateway,
+    Joi
 }

@@ -5,7 +5,7 @@ export default class ResponseError<T> {
     type : string;
     errors : T[];
 
-    constructor(type:string,errors:T[]){
+    constructor(type:string,errors:T[]=[]){
         this.type = type;
         this.errors = errors;
     }

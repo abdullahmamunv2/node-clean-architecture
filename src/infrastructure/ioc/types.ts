@@ -5,8 +5,12 @@ const TYPES = {
     ReadAddressPresenter        : Symbol.for('ReadAddressPresenter'),
     ReadValidatorGateway        : Symbol.for('ReadValidatorGateway'),
     ReadAdddressResposeMapper   : Symbol.for('ReadAdddressResposeMapper'),
-    ValidationErrorParser      : Symbol.for('ValidationErrorParser'),
-    ReadAddressController       : Symbol.for('ReadAddressController')
+    JoiValidationErrorParser      : Symbol.for('JoiValidationErrorParser'),
+    JsonSchemaValidationErrorParser      : Symbol.for('JsonSchemaValidationErrorParser'),
+    ReadAddressController       : Symbol.for('ReadAddressController'),
+    JoiValidatorGateway           : Symbol.for('JoiValidatorGateway'),
+    JsonSchemaValidatorGateway           : Symbol.for('JsonSchemaValidatorGateway'),
+    MongoErrorParser            : Symbol.for('MongoErrorParser')
 }
 
 export default TYPES;
