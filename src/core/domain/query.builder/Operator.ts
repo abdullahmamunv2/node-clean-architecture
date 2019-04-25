@@ -1,8 +1,10 @@
-export enum Operator {
+enum Operator {
     EQ,
     NEQ,
     LT,
     GT,
     LTEQ,
-    GTEQ,
+    GTEQ
 }
+
+export default Operator;

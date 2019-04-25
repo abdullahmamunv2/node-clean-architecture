@@ -1,21 +1,25 @@
 
-import {IPagination}        from './IPagination';
-import {SortItem}           from './Sort';
-import {ISorts}             from './ISorts';
-import {IConditions}        from './IConditions';
-import {Condition}          from './Condition';
-import {Operator}           from './Operator';
-import {Query}              from './Query';
-import {IQuery}              from './IQuery';
+import IPagination        from './IPagination';
+import ICondition         from './ICondition';
+import IListCondition     from './IListCondition';
+import IListSort          from './IListSort'
+import Condition          from './Condition';
+import Operator           from './Operator';
+import IQuery             from './IQuery';
+import Query              from './Query';
+import IQueryBuilder      from './IQueryBuilder';
+import QueryBuilder       from './QueryBuilder';
 
 
 export {
     IPagination,
-    ISorts,
-    IConditions,
-    SortItem,
+    ICondition,
+    IListCondition,
+    IListSort,
     Condition,
     Operator,
     IQuery,
-    Query
+    Query,
+    IQueryBuilder,
+    QueryBuilder
 }

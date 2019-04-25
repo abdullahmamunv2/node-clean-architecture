@@ -1,0 +1,15 @@
+{
+    "server" : {
+        "host":"localhost",
+        "port":{
+            "http" : "8080",
+            "https" : "443"
+        }
+    },
+    "mongodb" : {
+        "uri"     : "mongodb://127.0.0.1:27017/find-my-address",
+        "options" : {
+            "dbName"            : "find-my-address"
+        } 
+    }
+}

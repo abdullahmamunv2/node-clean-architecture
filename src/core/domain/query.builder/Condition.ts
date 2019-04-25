@@ -1,22 +1,21 @@
-import { Operator } from "./Operator";
+import ICondition from "./ICondition";
 
-export class Condition<T extends number | string >{
-    private key : string = "";
-    private value! : T ;
-    private operator! : Operator;
-    constructor(key : string , value :T , operator : Operator){
-        this.key        = key;
-        this.value      = value;
-        this.operator   = operator;
+export default class Condition<V,O> implements ICondition<V,O>{
+    private _key: string;
+    private _value: V;
+    private _operator: O;
+    constructor(key:string ,value:V , operator:O, ){
+        this._key = key;
+        this._value = value;
+        this._operator = operator;
     }
-
-    get Key(){
-        return this.key;
+    public get Key():string {
+        return this._key;
+    }   
+    public get Value():V {
+        return this._value;
     }
-    get Value(){
-        return this.value;
-    }
-    get Operator(){
-        return this.operator;
-    }
+    public get Operator():O {
+        return this._operator;
+    }   
 }

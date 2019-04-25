@@ -1,6 +1,5 @@
 node_modules
 config/production.json
-config/development.json
 dist/*
 package-lock.json
 ./.eslintrc.json

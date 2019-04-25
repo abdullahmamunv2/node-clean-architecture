@@ -2,11 +2,15 @@ import {ReadAddessRequest} from '@core/RRmodel/request/address';
 import {IReadValidatorGateway} from "@core/validator/gateway/address";
 import {TYPES} from '@ioc'
 import { injectable, inject } from "@core/di";
-import { JsonSchemaValidatorGateway } from '@infrastructure/ioc/entities';
+import { JsonSchemaValidatorGateway, JoiValidatorGateway } from '@infrastructure/ioc/entities';
+import * as Joi from 'joi'
 
 
+const joiSchema = Joi.object({
+    id : Joi.string().regex(/^[0-9a-fA-F]{24}$/).required()
+})
 
-const schema : any  = {
+const JsonSchema : any  = {
     "type": "object",
     "properties": {
       "id": {
@@ -19,14 +23,14 @@ const schema : any  = {
 
 @injectable()
 export default class ReadValidatorGateway implements IReadValidatorGateway{
-    validatorGateway : JsonSchemaValidatorGateway<ReadAddessRequest>;
-    constructor(@inject(TYPES.JsonSchemaValidatorGateway)
-    validatorGateway : JsonSchemaValidatorGateway<ReadAddessRequest>){
+    validatorGateway : JoiValidatorGateway<ReadAddessRequest>;
+    constructor(@inject(TYPES.JoiValidatorGateway)
+    validatorGateway : JoiValidatorGateway<ReadAddessRequest>){
         this.validatorGateway = validatorGateway;
         console.log(this.validatorGateway);
     }
 
     async validate(data: ReadAddessRequest): Promise<ReadAddessRequest> {
-            return this.validatorGateway.validateData(data,schema);
+            return this.validatorGateway.validateData(data,joiSchema);
     }
 }

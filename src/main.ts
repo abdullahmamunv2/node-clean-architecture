@@ -1,4 +1,3 @@
-process.env["NODE_CONFIG_DIR"] = __dirname+'/../config'
 require('module-alias/register');
 import HttpServer  from '@server/http'
 import ServerError from '@server/ServerError'

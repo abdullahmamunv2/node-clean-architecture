@@ -1,19 +1,12 @@
-import { IQueryBuilder } from "./IQueryBuilder";
-import {Query,Condition,SortItem} from "."
+import IQueryBuilder from "./IQueryBuilder";
+import Query from "./Query";
 
 
-export class QueryBuilder  implements IQueryBuilder{
+export default class QueryBuilder<T,V>  implements IQueryBuilder<T,V>{
     _page: number=1;
     _limit: number=100;
-    _conditions: Condition<string | number>[]=[];
-    _orders: SortItem<string | number>[]=[];
-
-    restore(){
-        this._page=1;
-        this._limit=100;
-        this._conditions=[];
-        this._orders =[];
-    }
+    _conditions: T[]=[];
+    _orders: V[]=[];
 
     page(page: number): this {
         this._page = page;
@@ -23,11 +16,11 @@ export class QueryBuilder  implements IQueryBuilder{
         this._limit = limit;
         return this;
     }
-    condition(conditions: Condition<string | number> | Condition<string | number>[]): this {
+    condition(conditions: T | T[]): this {
         if(conditions==null)
             return this;
         if(conditions instanceof Array){
-            conditions.forEach((condition :Condition<string | number> )=>{
+            conditions.forEach((condition :T)=>{
                 this._conditions.push(condition);
             })
         }
@@ -37,11 +30,11 @@ export class QueryBuilder  implements IQueryBuilder{
 
         return this;
     }
-    sort(orders: SortItem<string | number> | SortItem<string | number>[]): this {
+    sort(orders: V | V[]): this {
         if(orders==null)
             return this;
         if(orders instanceof Array){
-            orders.forEach((order :SortItem<string | number> )=>{
+            orders.forEach((order :V)=>{
                 this._orders.push(order);
             })
         }
@@ -51,11 +44,8 @@ export class QueryBuilder  implements IQueryBuilder{
         return this;
     }
 
-    build(): Query {
-        let query = new Query();
-        //query.
-        query.page = this._page;
-        query.limit = this._limit;
+    build(page:number = 1,limit:number=100): Query<T,V> {
+        let query = new Query<T,V>(page,limit);
         if(this._conditions.length > 0){
             this._conditions.forEach((condition)=>{
                 query.conditions.push(condition);
@@ -66,10 +56,6 @@ export class QueryBuilder  implements IQueryBuilder{
                 query.orders.push(order);
             })
         }
-        this.restore();
         return query;
     }
-
-
-
 }

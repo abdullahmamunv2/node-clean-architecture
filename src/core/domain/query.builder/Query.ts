@@ -1,18 +1,20 @@
-import { 
-    ISorts,
-    SortItem,
-    IPagination,
-    IConditions,
-    Condition,
-    IQuery
-} from "./";
+import IQuery from "./IQuery";
 
-
-export class Query implements IQuery{
-
+export default class Query<T,V> implements IQuery<T,V>{
     
-    page: number=1;
-    limit: number=100;
-    conditions: Condition<string | number>[]=[];
-    orders: SortItem<string | number>[]=[];
+    page: number;
+    limit: number;
+    conditions: T[]=[];
+    orders: V[]=[];
+    constructor(page:number,limit:number){
+        this.page = page;
+        this.limit = limit;
+    }
+    getSorts(): T[] {
+        throw new Error("Method not implemented.");
+    }
+    getConditions(): V[] {
+        throw new Error("Method not implemented.");
+    }
+    
 }

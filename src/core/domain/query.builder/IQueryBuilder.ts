@@ -1,10 +1,9 @@
-import { IQuery, SortItem } from ".";
-import { Condition } from ".";
+import IQuery from "./IQuery";
 
-export interface IQueryBuilder {
+export default interface IQueryBuilder<T,V> {
     page(page : number):this;
     limit(limit : number) : this;
-    condition(conditions : Condition<number|string> | Condition<number|string>[] ) : this;
-    sort(orders : SortItem<number|string> | SortItem<number|string>[] ) : this;
-    build() : IQuery;
+    condition(conditions : T | T[] ) : this;
+    sort(orders : V | V[] ) : this;
+    build() : IQuery<T,V>;
 }

@@ -1,11 +1,9 @@
 import { 
-    ISorts,
-    SortItem,
+    IListSort,
     IPagination,
-    IConditions,
-    Condition
+    IListCondition,
 } from "./";
 
-export interface IQuery extends IPagination,ISorts,IConditions{
+export default interface IQuery<T,V> extends IPagination,IListSort<T>,IListCondition<V>{
 
 }

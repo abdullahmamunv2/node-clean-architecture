@@ -6,11 +6,11 @@
   "scripts": {
     "pretest": "eslint --ignore-path .gitignore .",
     "dev-watch": "./node_modules/.bin/tsc -w",
-    "build": "./node_modules/.bin/tsc && mkdir -p ./dist/infrastructure/cert/ && cp -R ./src/infrastructure/cert ./dist/infrastructure/cert/",
+    "build": "./node_modules/.bin/tsc && mkdir -p ./dist/config/ && cp -R ./config/* ./dist/config/ && mkdir -p ./dist/src/infrastructure/cert/ && cp -R ./src/infrastructure/cert/* ./dist/src/infrastructure/cert/",
     "clean": "rm -r dist",
     "monitor": "./node_modules/.bin/nodemon ./dist/main.js",
     "start": "node ./dist/infrastructure/main.js",
-    "dev": "./node_modules/.bin/tsc -w & ./node_modules/.bin/nodemon ./dist/main.js"
+    "dev": "./node_modules/.bin/tsc -w & ./node_modules/.bin/nodemon ./dist/src/main.js"
   },
   "repository": {
     "type": "git",
@@ -34,15 +34,15 @@
     "reflect-metadata": "^0.1.10"
   },
   "_moduleAliases": {
-    "@src": "dist/app",
-    "@core": "dist/core",
-    "@server": "dist/infrastructure/server",
-    "@adapter": "dist/adapter",
-    "@db": "dist/infrastructure/persistance/db",
-    "@infrastructure": "dist/infrastructure",
-    "@entity.gateway": "dist/infrastructure/persistance/entity.gateway",
-    "@@mapperImpl": "dist/infrastructure/mapper",
-    "@ioc": "dist/infrastructure/ioc"
+    "@src": "dist/src/app",
+    "@core": "dist/src/core",
+    "@server": "dist/src/infrastructure/server",
+    "@adapter": "dist/src/adapter",
+    "@db": "dist/src/infrastructure/persistance/db",
+    "@infrastructure": "dist/src/infrastructure",
+    "@entity.gateway": "dist/src/infrastructure/persistance/entity.gateway",
+    "@@mapperImpl": "dist/src/infrastructure/mapper",
+    "@ioc": "dist/src/infrastructure/ioc"
   },
   "devDependencies": {
     "@types/cors": "^2.8.4",
