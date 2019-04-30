@@ -10,7 +10,8 @@ const TYPES = {
     ReadAddressController       : Symbol.for('ReadAddressController'),
     JoiValidatorGateway           : Symbol.for('JoiValidatorGateway'),
     JsonSchemaValidatorGateway           : Symbol.for('JsonSchemaValidatorGateway'),
-    MongoErrorParser            : Symbol.for('MongoErrorParser')
+    MongoErrorParser            : Symbol.for('MongoErrorParser'),
+    AddressRepository           : Symbol.for('AddressRepository'),
 }
 
 export default TYPES;

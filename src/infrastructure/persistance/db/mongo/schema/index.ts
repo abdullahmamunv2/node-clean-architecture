@@ -1,8 +1,7 @@
-import {AddressDocument,AddressModel,Address} from './address'
+import {AddressDocument,Address} from './address'
 
 
 export {
     AddressDocument,
     Address,
-    AddressModel
 }

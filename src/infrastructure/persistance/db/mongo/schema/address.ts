@@ -1,26 +1,10 @@
 import { Document, Schema, Model, model} from "mongoose";
 
-export class AddressModel {
-  public countryName  : string = "";
-  public countryCode  : string = "";
-  public type         : string = "";
-
-  public streetName   : string   ="";
-  public streetNumber : number = 0;
-  public TownName     : string = "";
-  public postalCode   : number   = 0;
-
-  public village      :string = "";
-  public postOffice   :string = "";
-  public thana        :string = "";
-  public district     :string ="";
-
-}
+import {AddressModel}  from '@entity.gateway/model'
 
 export interface AddressDocument extends AddressModel,Document{
   createdAt?  : Date|null;
   updatedAt?  : Date|null;
-  isUrban() : boolean;
 }
 
 
@@ -57,8 +41,5 @@ AddressSchema.pre<AddressDocument>("update", function(next) {
     next();
 });
 
-AddressSchema.methods.isUrban = function():boolean{
-    return this.type === 'urban';
-}
-
 export const Address: Model<AddressDocument> = model<AddressDocument>("Address", AddressSchema);
+

@@ -3,3 +3,4 @@ config/production.json
 dist/*
 package-lock.json
 ./.eslintrc.json
+doc/*

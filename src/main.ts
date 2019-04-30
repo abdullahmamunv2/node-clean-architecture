@@ -15,9 +15,10 @@ let serverConfig = config.get('server');
 
 let server : IServer = new HttpServer(serverConfig.host,serverConfig.port.http,app);
 
-client.initConnection(dbConfig.uri,dbConfig.options).then(()=>{
+/*client.initConnection(dbConfig.uri,dbConfig.options).then(()=>{
     return server.start();
-}).
+})*/
+server.start().
 then(()=>{
     console.log('server started.');
 }).

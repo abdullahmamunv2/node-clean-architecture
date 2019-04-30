@@ -2,7 +2,8 @@
 import IPagination        from './IPagination';
 import ICondition         from './ICondition';
 import IListCondition     from './IListCondition';
-import IListSort          from './IListSort'
+import IListSort          from './IListSort';
+import ISort              from './ISort';
 import Condition          from './Condition';
 import Operator           from './Operator';
 import IQuery             from './IQuery';
@@ -16,6 +17,7 @@ export {
     ICondition,
     IListCondition,
     IListSort,
+    ISort,
     Condition,
     Operator,
     IQuery,

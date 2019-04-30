@@ -10,8 +10,12 @@ import { ReadAddessRequest } from '@core/RRmodel/request/address/';
 import {ReadAddressResponse} from '@core/RRmodel/response/address'
 import ValidationError from '@core/exceptions/ValidatorError';
 import {JoiValidatorGateway,
-    JsonSchemaValidatorGateway} from '@infrastructure/validator/gateway'
+    JsonSchemaValidatorGateway} from '@infrastructure/validator/gateway';
+
+import {AddressRepository} from '@db/mongo/repository'
 import * as Joi from 'joi';
+
+import {AddressModel}  from '@entity.gateway/model'
 
 export {
     ReadAddressGateWay,
@@ -28,5 +32,7 @@ export {
     ReadAddressResponse,
     JoiValidatorGateway,
     JsonSchemaValidatorGateway,
-    Joi
+    Joi,
+    AddressRepository,
+    AddressModel
 }

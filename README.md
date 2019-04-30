@@ -9,22 +9,23 @@ Book :
 Clean architecture: a craftsman's guide to software structure and design -- Robert C. Martin(a.k.a Uncle Bob)
 
 ### Prerequisites
-1. Database configuration :
-        Install MongoDB.
+
 ### Installing
 
 ```
 1. git clone https://github.com/kamrulhasan1203/node-clean-architecture.git
-2. cd project root folder/
-#change server information and database config.
-3. cd /config/default.json     
-#install all depedencies.
-4. npm install  
-#build project(A new folder called dist will be created.)
-5. npm run build        
-#start application by node-start or nodemon-dev command
-6. npm run start/dev 
+2. cd project root folder/  
+3. npm install  
+4. npm run build        
+5. npm run start or npm run dev 
+```
+### Server Configuration
 
+1. Go to ./config folder
+2. Change server ip and post.(default localhost:8080)
+
+### Test
+1. Go to browser and hit http://{ip}:{port}/address/5c6f217412d1a4283ccd5e01
 
 ## Deployment
 

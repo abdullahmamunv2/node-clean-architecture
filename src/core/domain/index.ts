@@ -2,9 +2,8 @@ import * as Entity from "./entity";
 import * as EntityException  from  './entity.exception';
 import {
     IPagination,
-    ISorts,
-    IConditions,
-    SortItem,
+    ISort,
+    ICondition,
     Condition,
     Operator,
     IQuery,
@@ -16,9 +15,8 @@ export {
     Entity,
     EntityException,
     IPagination,
-    ISorts,
-    IConditions,
-    SortItem,
+    ISort,
+    ICondition,
     Condition,
     Operator,
     IQuery,

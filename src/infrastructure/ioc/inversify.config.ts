@@ -20,6 +20,7 @@ IOContainer.bind<I.IValidationErrorParser>(TYPES.JsonSchemaValidationErrorParser
 IOContainer.bind<I.IResponseMapper<BaseAddress,ReadAddressResponse>>(TYPES.ReadAdddressResposeMapper).to(E.ReadAddressResponseMapper);
 IOContainer.bind<I.IValidatorGateway<E.ReadAddessRequest,E.Joi.Schema>>(TYPES.JoiValidatorGateway).to(E.JoiValidatorGateway);
 IOContainer.bind<I.IValidatorGateway<E.ReadAddessRequest,any>>(TYPES.JsonSchemaValidatorGateway).to(E.JsonSchemaValidatorGateway);
+IOContainer.bind<I.IMongoRepository<E.AddressModel>>(TYPES.AddressRepository).to(E.AddressRepository);
 
 
 IOContainer.bind<I.IEntityGatewayErrorParser>(TYPES.MongoErrorParser).to(E.MongoErrorParser);
