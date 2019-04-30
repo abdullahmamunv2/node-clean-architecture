@@ -1,18 +1,24 @@
+import ISort from "./ISort";
 
-export class SortItem<T extends number | string>{
+
+export class Sort implements ISort{
     key : string = "";
-    value! : T ;
+    order : ORDER = ORDER.ASC
 
-    constructor(key:string , value : T){
+    constructor(key:string , order : ORDER){
         this.key   = key;
-        this.value = value;
+        this.order = order;
     }
-
     get Key():string{
         return this.key;
     }
-    get Value() : T{
-        return this.value;
+    get Order() : ORDER{
+        return this.order;
     }
+}
+
+export enum ORDER {
+    ASC,
+    DESC
 }
 

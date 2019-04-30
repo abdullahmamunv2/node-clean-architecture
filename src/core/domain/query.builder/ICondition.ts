@@ -1,5 +1,7 @@
-export default interface ICondition<V,O>{
+import { OPERATOR } from "./Condition";
+
+export default interface ICondition{
     Key : string;
-    Value : V;
-    Operator : O;
+    Value : any;
+    Operator : OPERATOR;
 }

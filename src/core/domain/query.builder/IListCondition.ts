@@ -1,3 +1,5 @@
-export default interface IListCondition<T>{
-    getConditions():T[];
+import { ICondition } from ".";
+
+export default interface IListCondition{
+    getConditions():ICondition[];
 }

@@ -4,6 +4,6 @@ import {
     IListCondition,
 } from "./";
 
-export default interface IQuery<T,V> extends IPagination,IListSort<T>,IListCondition<V>{
+export default interface IQuery extends IPagination,IListSort,IListCondition{
 
 }

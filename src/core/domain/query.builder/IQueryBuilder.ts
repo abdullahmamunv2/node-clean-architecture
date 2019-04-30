@@ -1,9 +1,11 @@
 import IQuery from "./IQuery";
+import { ICondition } from ".";
+import ISort from "./ISort";
 
-export default interface IQueryBuilder<T,V> {
+export default interface IQueryBuilder {
     page(page : number):this;
     limit(limit : number) : this;
-    condition(conditions : T | T[] ) : this;
-    sort(orders : V | V[] ) : this;
-    build() : IQuery<T,V>;
+    condition(conditions : ICondition | ICondition[] ) : this;
+    sort(orders : ISort | ISort[] ) : this;
+    build() : IQuery;
 }

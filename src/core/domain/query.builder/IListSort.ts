@@ -1,3 +1,5 @@
-export default interface IListSort<T>{
-    getSorts():T[];
+import ISort from "./ISort";
+
+export default interface IListSort{
+    getSorts():ISort[];
 }

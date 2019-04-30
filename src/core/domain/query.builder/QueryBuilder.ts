@@ -1,12 +1,15 @@
 import IQueryBuilder from "./IQueryBuilder";
+import IQuery from "./IQuery";
 import Query from "./Query";
+import ISort from "./ISort";
+import ICondition from "./ICondition";
 
 
-export default class QueryBuilder<T,V>  implements IQueryBuilder<T,V>{
+export default class QueryBuilder implements IQueryBuilder{
     _page: number=1;
     _limit: number=100;
-    _conditions: T[]=[];
-    _orders: V[]=[];
+    _conditions: ICondition[]=[];
+    _orders: ISort[]=[];
 
     page(page: number): this {
         this._page = page;
@@ -16,11 +19,11 @@ export default class QueryBuilder<T,V>  implements IQueryBuilder<T,V>{
         this._limit = limit;
         return this;
     }
-    condition(conditions: T | T[]): this {
+    condition(conditions: ICondition | ICondition[]): this {
         if(conditions==null)
             return this;
         if(conditions instanceof Array){
-            conditions.forEach((condition :T)=>{
+            conditions.forEach((condition :ICondition)=>{
                 this._conditions.push(condition);
             })
         }
@@ -30,11 +33,11 @@ export default class QueryBuilder<T,V>  implements IQueryBuilder<T,V>{
 
         return this;
     }
-    sort(orders: V | V[]): this {
+    sort(orders: ISort | ISort[]): this {
         if(orders==null)
             return this;
         if(orders instanceof Array){
-            orders.forEach((order :V)=>{
+            orders.forEach((order :ISort)=>{
                 this._orders.push(order);
             })
         }
@@ -44,8 +47,8 @@ export default class QueryBuilder<T,V>  implements IQueryBuilder<T,V>{
         return this;
     }
 
-    build(page:number = 1,limit:number=100): Query<T,V> {
-        let query = new Query<T,V>(page,limit);
+    build(page:number = 1,limit:number=100): IQuery {
+        let query = new Query(page,limit);
         if(this._conditions.length > 0){
             this._conditions.forEach((condition)=>{
                 query.conditions.push(condition);

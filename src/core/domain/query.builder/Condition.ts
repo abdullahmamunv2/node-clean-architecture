@@ -1,10 +1,10 @@
 import ICondition from "./ICondition";
 
-export default class Condition<V,O> implements ICondition<V,O>{
+export default class Condition implements ICondition{
     private _key: string;
-    private _value: V;
-    private _operator: O;
-    constructor(key:string ,value:V , operator:O, ){
+    private _value: any;
+    private _operator: OPERATOR;
+    constructor(key:string ,value:any , operator:OPERATOR ){
         this._key = key;
         this._value = value;
         this._operator = operator;
@@ -12,10 +12,19 @@ export default class Condition<V,O> implements ICondition<V,O>{
     public get Key():string {
         return this._key;
     }   
-    public get Value():V {
+    public get Value():any {
         return this._value;
     }
-    public get Operator():O {
+    public get Operator():OPERATOR {
         return this._operator;
     }   
+}
+
+export enum OPERATOR {
+    EQ,
+    NEQ,
+    LT,
+    GT,
+    LTEQ,
+    GTEQ
 }
