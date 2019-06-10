@@ -1,0 +1,22 @@
+export enum ERROR_TO_HTTP_CODE{
+    VALIDATION_ERROR=400,
+    AUTHENTICATION_ERROR=403,
+    INTERNAL_SERVER_ERROR=500,
+    NO_DATA_FOUND = 404
+}
+
+
+
+export const enum  HTTP_CODE {
+    OK            = 200,
+    CREATED       = 201,
+    NO_CONTENT    = 204,
+    
+    NOT_FOUND     = 404,
+    BAD_REQUEST   = 400,
+    UNAUTHORIZED  = 401,
+    FORBIDDEN     = 403,
+    CONFLICT      = 409,
+
+    INTERNAL_SERVER_ERROR = 500
+}

@@ -1,17 +1,14 @@
-import ApplicationError from "./ApplicationError";
-import { ErrorResponse } from ".";
-
-export default class ResponseError<T> {
+export default class ErrorResponse<T> {
     type : string;
-    errors : T[];
+    details : T[];
 
     constructor(type:string,errors:T[]=[]){
         this.type = type;
-        this.errors = errors;
+        this.details = errors;
     }
 
     hasError():boolean{
-        return this.errors.length !==0;
+        return this.details.length !==0;
     }
 }
 

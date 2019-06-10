@@ -12,10 +12,15 @@ import ValidationError from '@core/exceptions/ValidatorError';
 import {JoiValidatorGateway,
     JsonSchemaValidatorGateway} from '@infrastructure/validator/gateway';
 
+import {ErrorPresenter} from '@adapter/presenter/error';
+    
+
 import {AddressRepository} from '@db/mongo/repository'
 import * as Joi from 'joi';
 
 import {AddressModel}  from '@entity.gateway/model'
+
+import InteractorExecutor from '@core/interactor/Executor';
 
 export {
     ReadAddressGateWay,
@@ -34,5 +39,7 @@ export {
     JsonSchemaValidatorGateway,
     Joi,
     AddressRepository,
-    AddressModel
+    AddressModel,
+    ErrorPresenter,
+    InteractorExecutor
 }

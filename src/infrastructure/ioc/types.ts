@@ -1,8 +1,10 @@
 
-const TYPES = {
-    ReadAddressGateway          : Symbol.for('ReadAddressGateway'),
-    ReadAddressInteractor       : Symbol.for('ReadAddressInteractor'),
-    ReadAddressPresenter        : Symbol.for('ReadAddressPresenter'),
+import { CORE_TYPE } from '@core/types'
+
+export {CORE_TYPE};
+
+
+ const TYPES = {
     ReadValidatorGateway        : Symbol.for('ReadValidatorGateway'),
     ReadAdddressResposeMapper   : Symbol.for('ReadAdddressResposeMapper'),
     JoiValidationErrorParser      : Symbol.for('JoiValidationErrorParser'),
@@ -14,4 +16,4 @@ const TYPES = {
     AddressRepository           : Symbol.for('AddressRepository'),
 }
 
-export default TYPES;
+export { TYPES}

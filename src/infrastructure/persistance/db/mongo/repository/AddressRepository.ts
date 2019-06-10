@@ -58,7 +58,4 @@ export default class AddressRepository implements IMongoRepository<AddressModel>
     async delete(entity: AddressModel): Promise<AddressModel> {
         throw new Error("Method not implemented.");
     }
-
-
-
 }

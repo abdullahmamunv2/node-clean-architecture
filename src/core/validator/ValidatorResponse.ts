@@ -1,5 +1,5 @@
 
-import IValidatorResponse from "./IValidatorResponse";
+import IValidatorResponse from "@core/validator/IValidatorResponse";
 import ValidationError from "@core/exceptions/ValidatorError";
 import { ErrorResponse } from "@core/exceptions";
 

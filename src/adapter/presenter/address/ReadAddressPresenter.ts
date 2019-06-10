@@ -7,14 +7,14 @@ import {
         ReadAddressResponse} from '@core/RRmodel/response/address'
 
 import { injectable } from "@core/di";
-import {IPresenter, IErrorPresenter} from '@core/io.port/output';
+import {IPresenter} from '@core/io.port/output';
 import { ErrorResponse } from '@core/exceptions';
 import { ValidationError } from '@infrastructure/ioc/entities';
+import {SuccessViewModel} from "@adapter/viewmodel";
 
 
 @injectable()
 export default class ReadAddressPresenter implements IPresenter<ReadAddressResponse,ErrorResponse<ValidationError>>{
-    viewmodel:AddressViewModel|null=null;
     
     constructor(){
         automapper.createMap('ReadRuralAddressResponse', 'ReadRuralAddressViewModel')
@@ -24,20 +24,22 @@ export default class ReadAddressPresenter implements IPresenter<ReadAddressRespo
                   .convertToType(ReadUrbanAddressViewModel);
     }
     present(response: ReadAddressResponse,callback : (param : any) => void): Promise<any> {
+        let model:AddressViewModel|null=null;
         if(response.isUrban()){
-            this.viewmodel = automapper.map(
+            model = automapper.map(
                                                             'ReadUrbanModelAddress',
                                                             'ReadUrbanAddressViewModel',
                                                             response);
         }
         else{
-            this.viewmodel = automapper.map(
+            model = automapper.map(
                                                             'ReadRuralAddressResponse',
                                                             'ReadRuralAddressViewModel',
                                                             response);
         }
+        let viewmodel = new SuccessViewModel(model,"success");
         
-        callback(this.viewmodel);
+        callback(viewmodel);
 
         return Promise.resolve();
     }

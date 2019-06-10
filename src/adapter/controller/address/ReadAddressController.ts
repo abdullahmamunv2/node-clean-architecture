@@ -1,21 +1,23 @@
 import { ReadAddessRequest } from '@core/RRmodel/request/address/';
-import {TYPES}  from  '@ioc'
+import {CORE_TYPE}  from  '@core/types'
 import { injectable, inject } from "@core/di";
-import IInteractor from '@core/io.port/input';
+import Interactor from '@core/io.port/input';
 import InteractorExecutor from '@core/interactor/Executor';
 
 
 @injectable()
 export class ReadAddressController {
-    interactor : IInteractor<ReadAddessRequest>; 
-    constructor(@inject(TYPES.ReadAddressInteractor) interactor   : IInteractor<ReadAddessRequest>){
-        this.interactor = interactor;
+     
+    constructor(@inject(CORE_TYPE.ReadAddressInteractor) 
+                private interactor   : Interactor<ReadAddessRequest>,
+                @inject(CORE_TYPE.InteractorExecutor)
+                private interactorExecutor : InteractorExecutor){
     }
     async get(req : any,res : any): Promise<void> {
         let id = req.params.id;
         let request = new ReadAddessRequest(id);
-        InteractorExecutor.execute<ReadAddessRequest>(this.interactor,request,(viewModel:any)=>{
-            res.send(viewModel);
+        this.interactorExecutor.execute<ReadAddessRequest>(this.interactor,request,(viewModel:any)=>{
+            res.status(viewModel.getHttpStatusCode()).json(viewModel.getResponse());
         });
     }
 }

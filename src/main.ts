@@ -20,7 +20,7 @@ let server : IServer = new HttpServer(serverConfig.host,serverConfig.port.http,a
 })*/
 server.start().
 then(()=>{
-    console.log('server started.');
+    console.log('server started............');
 }).
 catch((error : Error)=>{
     console.log(error);

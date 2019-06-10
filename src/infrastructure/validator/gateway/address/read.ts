@@ -27,7 +27,6 @@ export default class ReadValidatorGateway implements IReadValidatorGateway{
     constructor(@inject(TYPES.JoiValidatorGateway)
     validatorGateway : JoiValidatorGateway<ReadAddessRequest>){
         this.validatorGateway = validatorGateway;
-        console.log(this.validatorGateway);
     }
 
     async validate(data: ReadAddessRequest): Promise<ReadAddessRequest> {
