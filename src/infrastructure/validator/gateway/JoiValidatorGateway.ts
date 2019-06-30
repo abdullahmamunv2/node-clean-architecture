@@ -24,6 +24,7 @@ export default class JoiValidatorGateway<T> implements IValidatorGateway<T,Joi.S
             data = await Joi.validate(data,schema);
             return data;
         }catch(error){
+            console.log(error);
             errors = this.errorGenerator.generate(error.details);
             let errorResponse   = new ResponseError<ValidationError>(ERROR_TYPE.VALIDATION_ERROR,errors);
             let response = new ValidatorResponse(errorResponse);

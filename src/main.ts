@@ -1,8 +1,9 @@
 require('module-alias/register');
+let config    = require('config');
 import HttpServer  from '@server/http'
 import ServerError from '@server/ServerError'
 import IServer from '@server/IServer'
-let config    = require('config');
+
 import {client} from '@db/mongo';
 import { Error } from 'mongoose';
 import app from '@infrastructure/app'

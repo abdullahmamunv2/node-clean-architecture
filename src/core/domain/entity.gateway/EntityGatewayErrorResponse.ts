@@ -1,7 +1,7 @@
 import { ErrorResponse, EntityGatewayError } from "@core/exceptions";
-import IEntityGatewayResponse from "./IEntityGatewayResponse";
+import IEntityGatewayResponse from "./IEntityGatewayErrorResponse";
 
-export default class EntityGatewayResponse implements IEntityGatewayResponse{
+export default class EntityGatewayErrorResponse implements IEntityGatewayResponse{
     errorResponse : ErrorResponse<EntityGatewayError>|null = null;
     constructor(errorResponse : ErrorResponse<EntityGatewayError> | null){
         this.errorResponse = errorResponse;

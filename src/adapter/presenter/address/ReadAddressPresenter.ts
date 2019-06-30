@@ -38,7 +38,6 @@ export default class ReadAddressPresenter implements IPresenter<ReadAddressRespo
                                                             response);
         }
         let viewmodel = new SuccessViewModel(model,"success");
-        
         callback(viewmodel);
 
         return Promise.resolve();

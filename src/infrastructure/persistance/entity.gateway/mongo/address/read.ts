@@ -15,7 +15,7 @@ import { handleError } from '@db/mongo'
 import { Address,AddressDocument } from '@db/mongo/schema'
 import {AddressModel}  from '@entity.gateway/model'
 import { BaseAddress } from '@core/domain/entity';
-import { IEntityGatewayErrorParser, EntityGatewayResponse } from '@core/domain/entity.gateway';
+import { IEntityGatewayErrorParser, EntityGatewayErrorResponse } from '@core/domain/entity.gateway';
 import { ERROR_TYPE, EntityGatewayError } from '@core/exceptions';
 import ResponseError from '@core/exceptions/ErrorResponse';
 import IMongoRepository from '@db/mongo/repository/IMongoRepository';
@@ -27,7 +27,6 @@ export default class ReadAddressGateWay implements IReadAddressGateWay {
     constructor(
         @inject(TYPES.MongoErrorParser)  errorParser : IEntityGatewayErrorParser,
         @inject(TYPES.AddressRepository)  addressRepository : IMongoRepository<AddressModel>,
-
         ){
             this.errorParser = errorParser;
             this.addressRepository = addressRepository;
@@ -52,15 +51,14 @@ export default class ReadAddressGateWay implements IReadAddressGateWay {
         let address : AddressModel | null=null;
         try{
             address = await this.addressRepository.read(id);
-            console.log(address);
         }catch(error){
             let errors = this.errorParser.generate(error);
             let errorResponse   = new ResponseError<EntityGatewayError>(ERROR_TYPE.INTERNAL_SERVER_ERROR,this.errorParser.generate(errors));
-            throw new EntityGatewayResponse(errorResponse);
+            throw new EntityGatewayErrorResponse(errorResponse);
         }
         if(address == null){
             let errorResponse   = new ResponseError<EntityGatewayError>(ERROR_TYPE.NO_DATA_FOUND);
-            throw new EntityGatewayResponse(errorResponse);
+            throw new EntityGatewayErrorResponse(errorResponse);
         }
         let addressModelSource : BaseAddress;
 

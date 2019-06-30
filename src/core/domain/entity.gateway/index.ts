@@ -1,9 +1,9 @@
-import EntityGatewayResponse from './EntityGatewayResponse'
+import EntityGatewayErrorResponse from './EntityGatewayErrorResponse'
 import IEntityGatewayErrorParser from './IEntityGatewayErrorParser'
-import IEntityGatewayResponse  from './IEntityGatewayResponse'
+import IEntityGatewayErrorResponse  from './IEntityGatewayErrorResponse'
 
 export { 
-    EntityGatewayResponse,
+    EntityGatewayErrorResponse,
     IEntityGatewayErrorParser,
-    IEntityGatewayResponse
+    IEntityGatewayErrorResponse
 }

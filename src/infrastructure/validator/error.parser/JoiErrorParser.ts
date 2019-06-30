@@ -1,5 +1,5 @@
 import {IValidationErrorParser} from "@core/validator";
-import { injectable, inject } from "@core/di";
+import { injectable } from "@core/di";
 import ValidationError from "@core/exceptions/ValidatorError";
 
 @injectable()

@@ -26,7 +26,7 @@ export default class AddressRepository implements IMongoRepository<AddressModel>
             Id : "5c6f217412d1a4283ccd5e01",
             countryName: "Bangladesh",
             countryCode: "BD",
-            type: "urban",
+            type: "rural",
             streetName: "",
             streetNumber: 0,
             TownName: "",

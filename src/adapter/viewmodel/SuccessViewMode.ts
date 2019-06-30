@@ -6,8 +6,8 @@ export default class SuccessViewModel<T> extends ViewModel<T>{
     }
     getResponse(){
         return {
-            status : super.responseStatus,
-            data :   super.data
+            status : this.responseStatus,
+            data :   this.data
         }
     }
 }

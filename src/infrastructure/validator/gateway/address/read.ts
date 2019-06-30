@@ -4,6 +4,7 @@ import {TYPES} from '@ioc'
 import { injectable, inject } from "@core/di";
 import { JsonSchemaValidatorGateway, JoiValidatorGateway } from '@infrastructure/ioc/entities';
 import * as Joi from 'joi'
+import {ValidationErrorItem,ValidationErrorFunction} from 'joi'
 
 
 const joiSchema = Joi.object({
@@ -24,8 +25,9 @@ const JsonSchema : any  = {
 @injectable()
 export default class ReadValidatorGateway implements IReadValidatorGateway{
     validatorGateway : JoiValidatorGateway<ReadAddessRequest>;
-    constructor(@inject(TYPES.JoiValidatorGateway)
-    validatorGateway : JoiValidatorGateway<ReadAddessRequest>){
+    constructor(
+      @inject(TYPES.JoiValidatorGateway)
+      validatorGateway : JoiValidatorGateway<ReadAddessRequest>){
         this.validatorGateway = validatorGateway;
     }
 

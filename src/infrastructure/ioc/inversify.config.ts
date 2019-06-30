@@ -11,7 +11,7 @@ import ApplicationError from '@core/exceptions/ApplicationError';
 
 const IOContainer = new Container();
 
-IOContainer.bind<I.IReadAddressGateWay>(CORE_TYPE.ReadAddressGateway).to(E.ReadAddressGateWay);
+IOContainer.bind<I.IReadAddressGateWay>(CORE_TYPE.ReadAddressGateway).to(E.ReadAddressGateWay).inSingletonScope();
 IOContainer.bind<I.IInteractor<E.ReadAddessRequest>>(CORE_TYPE.ReadAddressInteractor).to(E.ReadAddressInteractor);
 IOContainer.bind<E.ReadAddressController>(TYPES.ReadAddressController).to(E.ReadAddressController);
 IOContainer.bind<I.IPresenter<ReadAddressResponse,ErrorResponse<ValidationError>>>(CORE_TYPE.ReadAddressPresenter).to(E.ReadAddressPresenter);

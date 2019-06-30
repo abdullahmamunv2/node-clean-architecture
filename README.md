@@ -1,6 +1,7 @@
 # NodeJS Clean Architecture
 ## Getting Started
-To fully understand this project, you have to  understand uncle bob's clean architecture first. I am sharing some userfull resource bellow.If you already knew about clean architecture, you may skip.
+This project is based on uncle bob's clean architecture. If you dont know what clean architecture is then check the below links.
+
 Blog:
 https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html
 Video : 
@@ -9,15 +10,21 @@ Book :
 Clean architecture: a craftsman's guide to software structure and design -- Robert C. Martin(a.k.a Uncle Bob)
 
 ### Prerequisites
+1. Clean understanding on Clean architecture.
+2. Have basic idea on both NodeJS and Typescript.
 
-### Installing
+### Installing (Linux)
 
 ```
 1. git clone https://github.com/kamrulhasan1203/node-clean-architecture.git
 2. cd project root folder/  
 3. npm install  
+
+Linux : 
 4. npm run build        
 5. npm run start or npm run dev 
+
+Windows : 
 ```
 ### Server Configuration
 
