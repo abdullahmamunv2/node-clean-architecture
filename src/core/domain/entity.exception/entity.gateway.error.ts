@@ -7,10 +7,9 @@ export class EntityGatewayError extends Error {
                timestamp : Date = new Date()) {
       super(message);
       Object.setPrototypeOf(this, EntityGatewayError.prototype);
-      this.name = this.constructor.name;
       Error.captureStackTrace(this, this.constructor);
       this.code = code;
       this.timestamp = timestamp;
-      
+      this.name = this.constructor.name;
     }
   }
