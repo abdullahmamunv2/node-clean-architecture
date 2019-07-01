@@ -13,18 +13,14 @@ Clean architecture: a craftsman's guide to software structure and design -- Robe
 1. Clean understanding on Clean architecture.
 2. Have basic idea on both NodeJS and Typescript.
 
-### Installing (Linux)
+### Installing
 
 ```
 1. git clone https://github.com/kamrulhasan1203/node-clean-architecture.git
 2. cd project root folder/  
 3. npm install  
-
-Linux : 
 4. npm run build        
-5. npm run start or npm run dev 
-
-Windows : 
+5. npm run start
 ```
 ### Server Configuration
 
@@ -33,6 +29,9 @@ Windows :
 
 ### Test
 1. Go to browser and hit http://{ip}:{port}/address/5c6f217412d1a4283ccd5e01
+2. check error responses : 
+    http://{ip}:{port}/address/5c6f217412d1a4283ccd5e
+    http://{ip}:{port}/address/5c6f217412d1a4283ccd5e99
 
 ## Deployment
 

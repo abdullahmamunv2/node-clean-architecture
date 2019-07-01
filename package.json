@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "dev-watch": "./node_modules/.bin/tsc -w",
-    "build": "./node_modules/.bin/tsc && mkdir -p ./dist/config/ && cp -R ./config/* ./dist/config/ && mkdir -p ./dist/src/infrastructure/cert/ && cp -R ./src/infrastructure/cert/* ./dist/src/infrastructure/cert/",
+    "build": "./node_modules/.bin/tsc",
     "clean": "rm -r dist",
     "monitor": "./node_modules/.bin/nodemon ./dist/main.js",
-    "start": "node ./dist/infrastructure/main.js",
+    "start": "node ./dist/src/main.js",
     "dev": "./node_modules/.bin/tsc -w & ./node_modules/.bin/nodemon ./dist/src/main.js",
     "test": "./node_modules/.bin/nodemon --exec \"./node_modules/.bin/mocha ./dist/src/test/**/*.test.js --watch\""
   },
