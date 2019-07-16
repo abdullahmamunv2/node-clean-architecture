@@ -4,18 +4,17 @@ import {UrlBinder}  from './routers';
 
 
 
-const app : Application           = express();
+export const App : Application           = express();
 
 
 // middleware
-app.use(express.json());
-app.use(express.urlencoded({extended: true}));
-app.use(morgan('tiny'));
+App.use(express.json());
+App.use(express.urlencoded({extended: true}));
+App.use(morgan('tiny'));
 
 
-UrlBinder(app);
+UrlBinder(App);
 
-export default app;
 
 
 

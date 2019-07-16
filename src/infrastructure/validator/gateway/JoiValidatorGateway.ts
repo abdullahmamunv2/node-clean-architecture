@@ -1,10 +1,10 @@
-import {ValidatorResponse} from "@core/validator/";
-import {IValidationErrorParser} from "@core/validator";
-import {TYPES} from '@ioc'
-import { injectable, inject } from "@core/di";
-import ValidationError from "@core/exceptions/ValidatorError";
-import { ERROR_TYPE } from "@core/exceptions";
-import IValidatorGateway from "@core/validator/gateway/IValidatorGateway";
+import {ValidatorResponse} from "@core";
+import {IValidationErrorParser} from "@core";
+import {TYPES} from '@infrastructure'
+import { injectable, inject } from "@core";
+import {ValidatorError} from "@core";
+import { ERROR_TYPE } from "@core";
+import {IValidatorGateway} from "@core";
 import * as Joi from 'joi'
 
 
@@ -18,7 +18,7 @@ export default class JoiValidatorGateway<T> implements IValidatorGateway<T,Joi.S
         this.errorGenerator = errorGenerator
     }
     async validateData(data: T, schema : Joi.Schema): Promise<T> {
-        let errors : ValidationError[] = [];
+        let errors : ValidatorError[] = [];
         try{
             data = await Joi.validate(data,schema);
             return data;

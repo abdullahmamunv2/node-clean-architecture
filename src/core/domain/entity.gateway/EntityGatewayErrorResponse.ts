@@ -1,4 +1,4 @@
-import { ErrorResponse, EntityGatewayError } from "@core/exceptions";
+import { ErrorResponse, EntityGatewayError } from "@core";
 import IEntityGatewayResponse from "./IEntityGatewayErrorResponse";
 
 export default class EntityGatewayErrorResponse implements IEntityGatewayResponse{

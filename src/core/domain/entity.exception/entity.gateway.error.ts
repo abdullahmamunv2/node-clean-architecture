@@ -1,4 +1,4 @@
-export class EntityGatewayError extends Error {
+/*export class EntityGatewayError extends Error {
     message   : string = "EntityGatewayError";
     code      : number | string;
     timestamp : Date; 
@@ -13,3 +13,4 @@ export class EntityGatewayError extends Error {
       this.name = this.constructor.name;
     }
   }
+  */

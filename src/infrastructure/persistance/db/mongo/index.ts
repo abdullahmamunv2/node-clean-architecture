@@ -1,7 +1,4 @@
-import *  as client from './client';
-import  handleError  from './error.handle'
-
-export {
-    client,
-    handleError
-}
+export * from './repository';
+export * from './schema';
+export * from './client';
+export * from './error.handle';

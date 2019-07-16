@@ -34,15 +34,9 @@
     "reflect-metadata": "^0.1.10"
   },
   "_moduleAliases": {
-    "@src": "dist/src/app",
     "@core": "dist/src/core",
-    "@server": "dist/src/infrastructure/server",
     "@adapter": "dist/src/adapter",
-    "@db": "dist/src/infrastructure/persistance/db",
-    "@infrastructure": "dist/src/infrastructure",
-    "@entity.gateway": "dist/src/infrastructure/persistance/entity.gateway",
-    "@@mapperImpl": "dist/src/infrastructure/mapper",
-    "@ioc": "dist/src/infrastructure/ioc"
+    "@infrastructure": "dist/src/infrastructure"
   },
   "devDependencies": {
     "@types/chai": "^4.1.7",

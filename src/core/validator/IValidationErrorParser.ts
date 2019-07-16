@@ -1,6 +1,6 @@
-import { IErrorParser } from "@core/exceptions";
-import ValidationError from "@core/exceptions/ValidatorError";
+import { IErrorParser } from "@core";
+import {ValidatorError} from "@core";
 
-export default interface IValidationErrorParser extends IErrorParser<any,ValidationError[]>{
+export default interface IValidationErrorParser extends IErrorParser<any,ValidatorError[]>{
     
 }

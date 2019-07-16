@@ -1,5 +1,5 @@
 
-import { CORE_TYPE } from '@core/types'
+import { CORE_TYPE } from '@core'
 
 export {CORE_TYPE};
 

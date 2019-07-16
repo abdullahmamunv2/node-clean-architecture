@@ -1,9 +1,3 @@
-import * as input from './input';
-import * as output from './output';
-import Interactor from './input';
-
-export {
-    input,
-    output,
-    Interactor
-}
+export *  from './input';
+export *  from './output';
+export *  from './input';

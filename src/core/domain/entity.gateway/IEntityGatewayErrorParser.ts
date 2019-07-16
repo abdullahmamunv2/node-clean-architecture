@@ -1,6 +1,6 @@
-import { IErrorParser } from "@core/exceptions";
-import { EntityGatewayError } from "@core/exceptions/";
+import { IErrorParser } from "@core";
+import { EntityGatewayError } from "@core";
 
-export default interface IEntityGatewayErrorParser extends IErrorParser<any,EntityGatewayError[]>{
+export default  interface IEntityGatewayErrorParser extends IErrorParser<any,EntityGatewayError[]>{
     
 }

@@ -14,7 +14,8 @@ module.exports = {
     resolve: {
         extensions: ['.ts' ],
         alias : {
-            "@server" : path.resolve(__dirname, 'src/infrastructure/server/'),
+            "@adapter" : path.resolve(__dirname, 'src/adapter/'),
+            "@core" : path.resolve(__dirname, 'src/core/'),
             "@infrastructure" : path.resolve(__dirname, 'src/infrastructure/')
            }
     },

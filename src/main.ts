@@ -1,12 +1,14 @@
 require('module-alias/register');
 let config    = require('config');
-import HttpServer  from '@server/http'
-import ServerError from '@server/ServerError'
-import IServer from '@server/IServer'
+import {
+    HttpServer,
+    ServerError,
+    IServer
+}  from '@infrastructure'
 
-import {client} from '@db/mongo';
+import {client} from '@infrastructure';
 import { Error } from 'mongoose';
-import app from '@infrastructure/app'
+import {App} from '@infrastructure'
 
 
 
@@ -16,7 +18,7 @@ const path = require("path");
 let dbConfig     = config.get('mongodb');
 let serverConfig = config.get('server');
 
-let server : IServer = new HttpServer(serverConfig.host,serverConfig.port.http,app);
+let server : IServer = new HttpServer(serverConfig.host,serverConfig.port.http,App);
 
 /*client.initConnection(dbConfig.uri,dbConfig.options).then(()=>{
     return server.start();
