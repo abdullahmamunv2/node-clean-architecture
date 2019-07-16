@@ -1,6 +1,6 @@
 {
     "apps" : [{
-      "name"            : "robi-health-care",
+      "name"            : "clean-architecture",
       "instances"       : "max",
       "script"          : "server.js",
       "exec_mode"       : "cluster",

@@ -41,8 +41,10 @@
      "paths": {
       "@root/*"  : ["src/*"],
       "@server/*" : ["infrastructure/server/*"],
+      "@core": ["core"],
       "@core/*": ["core/*"],
       "@adapter/*": ["adapter/*"],
+      "@adapter": ["adapter"],
       "@db/*": ["infrastructure/persistance/db/*"],
       "@infrastructure/*" : ["infrastructure/*"],
       "@entity.gateway/*": ["infrastructure/persistance/entity.gateway/*"],

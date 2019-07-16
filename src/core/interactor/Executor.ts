@@ -15,8 +15,7 @@ export default class InteractorExecutor {
         try{
             await interactor.execute(request,callback);
         }catch(error){
-            let response   = error.getResponse();
-            this.errorPresenter.present(response,callback);
+            this.errorPresenter.present(error,callback);
         }
     }
 }

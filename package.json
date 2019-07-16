@@ -4,13 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev-watch": "./node_modules/.bin/tsc -w",
-    "build": "./node_modules/.bin/tsc && mkdir -p ./dist/config/ && cp -R ./config/* ./dist/config/ && mkdir -p ./dist/src/infrastructure/cert/ && cp -R ./src/infrastructure/cert/* ./dist/src/infrastructure/cert/",
+    "build": "webpack --mode=development --watch",
+    "build:prod": "./node_modules/webpack",
     "clean": "rm -r dist",
-    "monitor": "./node_modules/.bin/nodemon ./dist/main.js",
+    "monitor": "nodemon ./dist/main.js",
     "start": "node ./dist/infrastructure/main.js",
-    "dev": "./node_modules/.bin/tsc -w & ./node_modules/.bin/nodemon ./dist/src/main.js",
-    "test": "./node_modules/.bin/nodemon --exec \"./node_modules/.bin/mocha ./dist/src/test/**/*.test.js --watch\""
+    "dev": "tsc -w & nodemon ./dist/src/main.js",
+    "test": "nodemon --exec \"mocha ./dist/src/test/**/*.test.js --watch\""
   },
   "repository": {
     "type": "git",
@@ -57,10 +57,16 @@
     "@types/node": "^11.11.4",
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
+    "copy-webpack-plugin": "^5.0.3",
     "eslint": "^5.16.0",
     "eslint-plugin-security": "^1.4.0",
     "mocha": "^6.1.4",
     "nodemon": "^1.18.10",
-    "typescript": "^3.3.4000"
+    "nodemon-webpack-plugin": "^4.0.8",
+    "ts-loader": "^6.0.4",
+    "typescript": "^3.5.3",
+    "webpack": "^4.35.3",
+    "webpack-cli": "^3.3.6",
+    "webpack-node-externals": "^1.7.2"
   }
 }

@@ -1,9 +1,8 @@
-import {ValidatorResponse,IValidatorResponse} from "@core/validator/";
+import {ValidatorResponse} from "@core/validator/";
 import {IValidationErrorParser} from "@core/validator";
 import {TYPES} from '@ioc'
 import { injectable, inject } from "@core/di";
 import ValidationError from "@core/exceptions/ValidatorError";
-import ResponseError from "@core/exceptions/ErrorResponse";
 import { ERROR_TYPE } from "@core/exceptions";
 import IValidatorGateway from "@core/validator/gateway/IValidatorGateway";
 import * as Joi from 'joi'
@@ -26,8 +25,7 @@ export default class JoiValidatorGateway<T> implements IValidatorGateway<T,Joi.S
         }catch(error){
             console.log(error);
             errors = this.errorGenerator.generate(error.details);
-            let errorResponse   = new ResponseError<ValidationError>(ERROR_TYPE.VALIDATION_ERROR,errors);
-            let response = new ValidatorResponse(errorResponse);
+            let response   = new ValidatorResponse(ERROR_TYPE.VALIDATION_ERROR,errors);
             throw response;
         }
         

@@ -1,11 +1,11 @@
-import {IValidationErrorParser} from "@core/validator";
+import {Validator} from "@core";
 import { injectable } from "@core/di";
-import ValidationError from "@core/exceptions/ValidatorError";
+import {ValidatorError} from "@core/exceptions";
 
 @injectable()
-export default class JoiErrorParser implements IValidationErrorParser{
-    generate(errorList: any): ValidationError[] {
-        let errors : ValidationError[] = [];
+export default class JoiErrorParser implements Validator.IValidationErrorParser{
+    generate(errorList: any): ValidatorError[] {
+        let errors : ValidatorError[] = [];
         errorList.map((err:any)=>{
             errors.push({
                 message: err.message,

@@ -1,9 +1,9 @@
-import IValidatorResponse from './IValidatorResponse';
 import ValidatorResponse from './ValidatorResponse';
-import IValidationErrorParser from './IValidationErrorParser'
+import IValidationErrorParser from './IValidationErrorParser';
+import IValidatorGateway      from './gateway/IValidatorGateway';
 
 export {
-    IValidatorResponse,
     ValidatorResponse,
-    IValidationErrorParser
+    IValidationErrorParser,
+    IValidatorGateway
 }
