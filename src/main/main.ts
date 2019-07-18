@@ -1,13 +1,13 @@
-require('./../module.alias.config')();
+require('./../../module.alias.config')();
 require('reflect-metadata');
 let config    = require('config');
 import {
     HttpServer,
     IServer
-}  from '@infrastructure'
+}  from 'main/infrastructure'
 
 import { Error } from 'mongoose';
-import {App} from '@infrastructure'
+import {App} from 'main/infrastructure'
 
 
 

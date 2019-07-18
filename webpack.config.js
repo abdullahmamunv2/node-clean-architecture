@@ -23,12 +23,12 @@ module.exports = (env,args) =>{
     },
     mode : MODE,
     target : PLATFORM,
-     entry  : path.resolve(__dirname, 'src/core/index.ts'),
+     entry  : path.resolve(__dirname, 'src/main/core/index.ts'),
      externals : [nodeExternals()],
      resolve : {
         extensions: ['.ts'],
         alias: {
-            '@core': path.resolve(__dirname, 'src','core')
+            '@core': path.resolve(__dirname, 'src/main/core')
         }
       },
      output : {
@@ -43,12 +43,12 @@ module.exports = (env,args) =>{
     },
     mode : MODE,
     target : PLATFORM,
-    entry     : path.resolve(__dirname, 'src/adapter/index.ts'),
+    entry     : path.resolve(__dirname, 'src/main/adapter/index.ts'),
     externals : [nodeExternals(),'@core'],
     resolve : {
       extensions: ['.ts'],
       alias: {
-          '@adapter': path.resolve(__dirname, 'src','adapter')
+          '@adapter': path.resolve(__dirname, 'src/main/adapter')
       }
     },
     output : {
@@ -63,12 +63,12 @@ module.exports = (env,args) =>{
     },
     mode : MODE,
     target : PLATFORM,
-    entry  : path.resolve(__dirname, 'src/infrastructure/index.ts'),
+    entry  : path.resolve(__dirname, 'src/main/infrastructure/index.ts'),
     externals : [nodeExternals(),'@core','@adapter'],
     resolve : {
       extensions: ['.ts'],
       alias: {
-          '@infrastructure': path.resolve(__dirname, 'src','infrastructure')
+          '@infrastructure': path.resolve(__dirname, 'src/main/infrastructure')
       }
     },
     output : {
@@ -84,7 +84,7 @@ module.exports = (env,args) =>{
     },
     mode : MODE,
     target : PLATFORM,
-    entry  : path.resolve(__dirname, 'src/main.ts'),
+    entry  : path.resolve(__dirname, 'src/main/main.ts'),
     externals : [nodeExternals(),'@core','@adapter','@infrastructure'],
     output : {
       path: path.join(__dirname, TARGET_DIR,ENVIRONMENT,'src'),   
@@ -152,8 +152,12 @@ module.exports = (env,args) =>{
           { from: path.resolve(__dirname,'log4js.json'), to: path.resolve(__dirname,TARGET_DIR,ENVIRONMENT) },
           { from: path.resolve(__dirname,'module.alias.config.js'), to: path.resolve(__dirname,TARGET_DIR,ENVIRONMENT) },
         ]),
-        //new NodemonPlugin(),
-        //new BundleAnalyzerPlugin()
+        /*new NodemonPlugin({
+          watch: path.resolve('./dist/development'),
+          script: './dist/development/src/main.js',
+          verbose: true,
+        }),*/
+        new BundleAnalyzerPlugin()
       ]
 
 
@@ -169,7 +173,8 @@ module.exports = (env,args) =>{
         //new BundleAnalyzerPlugin()
       ]
 
-      return [mainConfig,infrastructureConfig,adapterConfig,coreConfig];
+      return mainConfig;
+      //return [mainConfig,infrastructureConfig,adapterConfig,coreConfig];
 
 
   }

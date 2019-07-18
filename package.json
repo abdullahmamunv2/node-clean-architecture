@@ -6,17 +6,17 @@
   "scripts": {
     "build": "webpack --env dev --watch",
     "build:prod": "webpack --env prod",
-    "build:stage": "webpack --env stage"
-
+    "build:stage": "webpack --env stage",
+    "run:test": "nodemon ./src/main.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://iamcharlie@bitbucket.org/iamcharlie/findmyaddress.git"
+    "url": "git+https://github.com/kamrulhasan1203/node-clean-architecture.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "homepage": "https://bitbucket.org/iamcharlie/findmyaddress#readme",
+  "homepage": "https://github.com/kamrulhasan1203/node-clean-architecture",
   "dependencies": {
     "automapper-ts": "^1.9.0",
     "config": "^3.0.1",
@@ -28,8 +28,7 @@
     "module-alias": "^2.2.0",
     "mongoose": "^5.4.13",
     "morgan": "^1.9.1",
-    "reflect-metadata": "^0.1.10",
-    "resolve": "^1.11.1"
+    "reflect-metadata": "^0.1.10"
   },
   "devDependencies": {
     "@types/chai": "^4.1.7",
