@@ -1,4 +1,4 @@
-import ViewModel from "@adapter/viewmodel/ViewModel"
+import ViewModel from "./ViewModel"
 
 export default class ErrorViewModel<T> extends ViewModel<T>{
     constructor(data:T,responseStatus :string,httpStatusCode:number=500){

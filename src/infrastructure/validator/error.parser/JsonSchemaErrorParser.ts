@@ -1,11 +1,11 @@
-import {Validator} from "@core";
-import { injectable } from "@core/di";
-import ValidationError from "@core/exceptions/ValidatorError";
+import {IValidationErrorParser} from "@core";
+import { injectable } from "@core";
+import {ValidatorError} from "@core";
 
 @injectable()
-export default class JsonSchemaErrorParser implements Validator.IValidationErrorParser{
-    generate(errorList: any): ValidationError[] {
-        let errors : ValidationError[] = [];
+export default class JsonSchemaErrorParser implements IValidationErrorParser{
+    generate(errorList: any): ValidatorError[] {
+        let errors : ValidatorError[] = [];
         errorList.map((err:any)=>{
             errors.push({
                 message: err.message,

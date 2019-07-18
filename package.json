@@ -4,13 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --mode=development --watch",
-    "build:prod": "./node_modules/webpack",
-    "clean": "rm -r dist",
-    "monitor": "nodemon ./dist/main.js",
-    "start": "node ./dist/infrastructure/main.js",
-    "dev": "tsc -w & nodemon ./dist/src/main.js",
-    "test": "nodemon --exec \"mocha ./dist/src/test/**/*.test.js --watch\""
+    "build": "webpack --env dev --watch",
+    "build:prod": "webpack --env prod",
+    "build:stage": "webpack --env stage"
+
   },
   "repository": {
     "type": "git",
@@ -31,12 +28,8 @@
     "module-alias": "^2.2.0",
     "mongoose": "^5.4.13",
     "morgan": "^1.9.1",
-    "reflect-metadata": "^0.1.10"
-  },
-  "_moduleAliases": {
-    "@core": "dist/src/core",
-    "@adapter": "dist/src/adapter",
-    "@infrastructure": "dist/src/infrastructure"
+    "reflect-metadata": "^0.1.10",
+    "resolve": "^1.11.1"
   },
   "devDependencies": {
     "@types/chai": "^4.1.7",
@@ -60,6 +53,7 @@
     "ts-loader": "^6.0.4",
     "typescript": "^3.5.3",
     "webpack": "^4.35.3",
+    "webpack-bundle-analyzer": "^3.3.2",
     "webpack-cli": "^3.3.6",
     "webpack-node-externals": "^1.7.2"
   }

@@ -1,12 +1,11 @@
-require('module-alias/register');
+require('./../module.alias.config')();
+require('reflect-metadata');
 let config    = require('config');
 import {
     HttpServer,
-    ServerError,
     IServer
 }  from '@infrastructure'
 
-import {client} from '@infrastructure';
 import { Error } from 'mongoose';
 import {App} from '@infrastructure'
 
@@ -20,9 +19,6 @@ let serverConfig = config.get('server');
 
 let server : IServer = new HttpServer(serverConfig.host,serverConfig.port.http,App);
 
-/*client.initConnection(dbConfig.uri,dbConfig.options).then(()=>{
-    return server.start();
-})*/
 server.start().
 then(()=>{
     console.log('server started............');

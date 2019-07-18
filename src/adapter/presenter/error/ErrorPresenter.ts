@@ -13,7 +13,7 @@ import {
 
 import {
     ERROR_TO_STATUS
-}                           from '@adapter'
+}                           from '@adapter';
 import {
     ERROR_TO_HTTP_CODE
 }                           from '@adapter'

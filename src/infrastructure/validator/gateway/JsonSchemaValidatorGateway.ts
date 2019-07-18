@@ -1,10 +1,10 @@
-import {ValidatorResponse} from "@core/validator/";
-import {IValidationErrorParser} from "@core/validator";
-import {TYPES} from '@ioc'
-import { injectable, inject } from "@core/di";
-import ValidationError from "@core/exceptions/ValidatorError";
-import { ERROR_TYPE } from "@core/exceptions";
-import IValidatorGateway from "@core/validator/gateway/IValidatorGateway";
+import {ValidatorResponse} from "@core";
+import {IValidationErrorParser} from "@core";
+import {TYPES} from '@infrastructure'
+import { injectable, inject } from "@core";
+import {ValidatorError} from "@core";
+import { ERROR_TYPE } from "@core";
+import {IValidatorGateway} from "@core";
 import {validate} from 'jsonschema';
 
 
@@ -17,7 +17,7 @@ export default class JsonSchemaValidatorGateway<T> implements IValidatorGateway<
         this.errorGenerator = errorGenerator
     }
     async validateData(data: T, schema : any): Promise<T> {
-        let errors : ValidationError[] = [];
+        let errors : ValidatorError[] = [];
         let result = validate(data,schema);
         if(result.valid){
             return result.instance
