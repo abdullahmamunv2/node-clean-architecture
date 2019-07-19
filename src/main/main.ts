@@ -4,11 +4,10 @@ let config    = require('config');
 import {
     HttpServer,
     IServer
-}  from 'main/infrastructure'
+}  from '@infrastructure'
 
 import { Error } from 'mongoose';
-import {App} from 'main/infrastructure'
-
+import {App} from '@infrastructure'
 
 
 var fs = require('fs');

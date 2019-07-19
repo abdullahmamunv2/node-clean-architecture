@@ -152,12 +152,12 @@ module.exports = (env,args) =>{
           { from: path.resolve(__dirname,'log4js.json'), to: path.resolve(__dirname,TARGET_DIR,ENVIRONMENT) },
           { from: path.resolve(__dirname,'module.alias.config.js'), to: path.resolve(__dirname,TARGET_DIR,ENVIRONMENT) },
         ]),
-        /*new NodemonPlugin({
+        new NodemonPlugin({
           watch: path.resolve('./dist/development'),
           script: './dist/development/src/main.js',
           verbose: true,
-        }),*/
-        new BundleAnalyzerPlugin()
+        }),
+        //new BundleAnalyzerPlugin()
       ]
 
 
@@ -173,8 +173,8 @@ module.exports = (env,args) =>{
         //new BundleAnalyzerPlugin()
       ]
 
-      return mainConfig;
-      //return [mainConfig,infrastructureConfig,adapterConfig,coreConfig];
+      //return mainConfig;
+      return [mainConfig,infrastructureConfig,adapterConfig,coreConfig];
 
 
   }

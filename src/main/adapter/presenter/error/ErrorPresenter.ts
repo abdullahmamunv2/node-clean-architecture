@@ -1,22 +1,22 @@
 import {
         ApplicationError,
         ErrorResponse,
-        IErrorPresenter}    from "main/core";
+        IErrorPresenter}    from "@core";
 
 import {
     injectable
-}                           from 'main/core';
+}                           from '@core';
 
 import {
     ErrorViewModel
-}                           from "main/adapter";
+}                           from "@adapter";
 
 import {
     ERROR_TO_STATUS
-}                           from 'main/adapter';
+}                           from '@adapter';
 import {
     ERROR_TO_HTTP_CODE
-}                           from 'main/adapter'
+}                           from '@adapter'
 
 
 declare type HTTP_ERROR_TYPE = keyof typeof ERROR_TO_HTTP_CODE;
