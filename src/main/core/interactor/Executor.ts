@@ -2,12 +2,14 @@ import {Interactor} from "@core";
 import { ApplicationError, ErrorResponse } from "@core";
 import { IErrorPresenter } from "@core";
 import {inject, injectable } from "@core";
-import {CORE_TYPE}     from "@core"
+import {
+        TYPE_PRESENTER
+       }                   from "@core"
 
 @injectable()
 export default class InteractorExecutor {
     constructor(
-        @inject(CORE_TYPE.ErrorPresenter)
+        @inject(TYPE_PRESENTER.ErrorPresenter)
         private errorPresenter: IErrorPresenter<ErrorResponse<ApplicationError>>
     ){
 

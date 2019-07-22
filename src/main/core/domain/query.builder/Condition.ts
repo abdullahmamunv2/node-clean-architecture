@@ -9,13 +9,13 @@ export default class Condition implements ICondition{
         this._value = value;
         this._operator = operator;
     }
-    public get Key():string {
+    get Key():string {
         return this._key;
     }   
-    public get Value():any {
+    get Value():any {
         return this._value;
     }
-    public get Operator():OPERATOR {
+    get Operator():OPERATOR {
         return this._operator;
     }   
 }

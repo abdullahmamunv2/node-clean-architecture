@@ -1,6 +1,2 @@
-import { injectable,inject } from "inversify";
-
-export { 
-    injectable,
-    inject
-}
+export * from './annotation';
+export * from './types';
