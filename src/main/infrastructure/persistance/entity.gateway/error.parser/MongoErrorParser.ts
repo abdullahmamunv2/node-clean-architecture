@@ -1,4 +1,4 @@
-import { injectable, inject } from "@core";
+import { injectable} from "@core";
 import {EntityGatewayError} from "@core";
 import { IEntityGatewayErrorParser } from "@core";
 import {Error} from "mongoose";

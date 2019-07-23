@@ -1,3 +1,3 @@
-export interface IPresenter<T,E> {
-    present(response:T,callback : (param : any) => void) : Promise<any>;
+export interface IPresenter<T> {
+    present(response:T,callback : (param : any) => void) : void;
 }

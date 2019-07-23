@@ -1,7 +1,7 @@
 import {
         ApplicationError,
         ErrorResponse,
-        IErrorPresenter}    from "@core";
+        IPresenter}    from "@core";
 
 import {
     injectable
@@ -26,7 +26,7 @@ declare type RESPONSE_STATUS_TYPE = keyof typeof ERROR_TO_STATUS;
 
 
 @injectable()
-export default class ErrorPresenter implements IErrorPresenter<ErrorResponse<ApplicationError>>{
+export default class ErrorPresenter implements IPresenter<ErrorResponse<ApplicationError>>{
     present(response: ErrorResponse<ApplicationError>,callback : (param : any) => void): void {
         let errorType : string  = response.type;
         let statusCode = ERROR_TO_HTTP_CODE[errorType as HTTP_ERROR_TYPE]

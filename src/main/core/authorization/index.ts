@@ -1,7 +1,7 @@
-import IAuthorization   from './IAuthorization';
-import IScopeGateway    from './IScopeGateway';
-import IScopeValidator  from './IScopeValidator';
-import ITokenValidator  from './ITokenValidator';
+import IAuthorization   from './i.authorization';
+import IScopeGateway    from './i.scope.gateway';
+import IScopeValidator  from './i.scope.validator';
+import ITokenValidator  from './i.token.validator';
 
 export {
     IAuthorization,
