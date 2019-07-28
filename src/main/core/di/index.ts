@@ -1,2 +1,5 @@
+import * as CORE_TYPE from './types'
 export * from './annotation';
-export * from './types';
+export {
+    CORE_TYPE
+};

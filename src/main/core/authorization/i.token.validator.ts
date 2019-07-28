@@ -1,3 +1,3 @@
-export default interface ITokenValidator<T> {
-    validate(type:string,token:string):Promise<T>
+export default interface ITokenValidator {
+    validate(token:string):Promise<boolean>
 }

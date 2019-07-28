@@ -1,4 +1,4 @@
 
 export default interface IScopeGateway {
-    get():Promise<String[]>
+    get(resourceId:string):Promise<String[]>
 }

@@ -1,17 +1,23 @@
-export default class Request<E,A> {
-    _authorization? : A ;
-    _body : E;
-    constructor(body : E){
+export default class Request<H,B> {
+    _authHeader? : H ;
+    _isAuthRequired : boolean;
+    _body : B;
+    constructor(body : B){
         this._body = body;
+        this._isAuthRequired = false;
     }
-    getBody() : E {
+    getBody() : B {
         return this._body;
     }
     isAuthRequired(){
-        return this._authorization != undefined;
+        return this._isAuthRequired;
     }
-    getAuthorization(){
-        return this._authorization;
+    setAuthHeader(header : H){
+        this._isAuthRequired = true;
+        this._authHeader = header;
+    } 
+    getAuthHeader(){
+        return this._authHeader;
     } 
 }
 
