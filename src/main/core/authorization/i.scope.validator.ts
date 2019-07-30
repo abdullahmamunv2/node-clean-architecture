@@ -1,3 +1,3 @@
-export default interface IScopeValidator<T> {
-    validate(token:string):Promise<T>
+export default interface IScopeValidator {
+    validate(scopes:string[]):Promise<boolean>
 }

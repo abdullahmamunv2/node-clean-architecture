@@ -1,9 +1,11 @@
 
 import {
-    IAuthorization,
     TokenAuthRequest,
     TokenAuthResponse,
-    IScopeGateway
+    IScopeGateway,
+    ITokenBasedAuthorization,
+    IScopeValidator,
+    IJwtParser
 } from '@core'
 
 import {
@@ -15,18 +17,32 @@ import {
 
 import {
         inject,
-    injectable} from '@core'
+        injectable
+    } from '@core'
 
-injectable()
-/*export class TokenAuthorization implements IAuthorization<TokenAuthRequest,TokenAuthResponse>{
+@injectable()
+export class JwtTokenAuthorization implements ITokenBasedAuthorization{
     _scopeGateway : IScopeGateway;
-    constructor(){
-        @inject(CORE_TYPE.TYPE_AUTHORIZATION.SCOPE_GATEWAY)
-        _scopeGateway : IScopeGateway = 
-        }
-    }
-    authorize(request: TokenAuthRequar): Promise<TokenAuthResponse> {
-        throw new Error("Method not implemented.");
-    }
+    _scopeValidator : IScopeValidator;
+    _jwtTokenParser    : IJwtParser;
+    constructor(
+            @inject(CORE_TYPE.TYPE_AUTHORIZATION.SCOPE_GATEWAY)
+            scopeGateway : IScopeGateway,
+            @inject(CORE_TYPE.TYPE_AUTHORIZATION.SCOPE_VALIDAOR)
+            scopeValidator : IScopeValidator,
+            @inject(CORE_TYPE.TYPE_AUTHORIZATION.TOKEN_PARSER)
+            jwtTokenParser : IJwtParser,
 
-}*/
+        ){
+            this._scopeGateway   = scopeGateway;
+            this._scopeValidator = scopeValidator;
+            this._jwtTokenParser = jwtTokenParser;
+    }
+    authorize(request: TokenAuthRequest): Promise<TokenAuthResponse> {
+        //request.
+
+        return Promise.resolve(new TokenAuthResponse());
+    }
+    
+
+}

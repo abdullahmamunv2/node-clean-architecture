@@ -1,6 +1,6 @@
 
 import {
-    IScopeGateway
+    IScopeGateway, AuthorizationError
 } from '@core'
 
 import {
@@ -8,14 +8,10 @@ import {
     injectable
 } from '@core'
 
-export class TokenScopeGateway implements IScopeGateway {
-    scopes : {
-        '1234' : ['scope1','scope2']
-    }
+@injectable()
+export default class TokenScopeGateway implements IScopeGateway {
     get(resourceId: string): Promise<string[]> {
-        if(this.scopes[resourceId]){
-            return Promise.resolve(this.scopes[resourceId]);
-        }
+        return Promise.resolve(['profile','email'])
     }
 
 }
