@@ -1,4 +1,4 @@
 
-export class Response{
+export default class Response{
     
 }

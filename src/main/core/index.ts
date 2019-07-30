@@ -2,6 +2,7 @@
  * Here export order is important.So think twice before changing oder. 
  */
 
+export *  from './req.res.model'
 export *  from './di';
 export *  from './io.port';
 export *  from './mapper';
