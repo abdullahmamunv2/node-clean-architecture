@@ -1,0 +1,10 @@
+FROM node:8-alpine
+WORKDIR /usr/clean-architecture
+COPY ./package*.json ./
+RUN npm install --only=prod
+COPY ./src/core ./src/core
+COPY ./src/adapter ./src/adapter
+COPY ./src/infrastructure ./src/infrastructure
+COPY . .
+EXPOSE 80
+CMD [ "node", "./src/main.js" ]

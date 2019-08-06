@@ -6,7 +6,6 @@ import {JoiValidatorGateway,
 
 import {ErrorPresenter} from '@adapter';
     
-import * as Joi from 'joi';
 
 
 import {Executor} from '@core';
@@ -18,7 +17,6 @@ export {
     ValidatorError,
     JoiValidatorGateway,
     JsonSchemaValidatorGateway,
-    Joi,
     ErrorPresenter,
     Executor
 }

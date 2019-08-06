@@ -5,7 +5,7 @@ import { injectable, inject } from "@core";
 import {ValidatorError} from "@core";
 import { ERROR_TYPE } from "@core";
 import {IValidatorGateway} from "@core";
-import * as Joi from 'joi'
+import * as Joi from '@hapi/joi'
 
 
 
