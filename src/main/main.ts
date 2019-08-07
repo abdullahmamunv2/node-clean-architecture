@@ -24,5 +24,6 @@ then(()=>{
 }).
 catch((error : Error)=>{
     console.log(error);
+    process.exit(1);
 })
 

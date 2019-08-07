@@ -1,10 +1,10 @@
-FROM node:8-alpine
+FROM node:10-alpine
 WORKDIR /usr/clean-architecture
 COPY ./package*.json ./
-RUN npm install --only=prod
+RUN npm install --only=prod && npm install -D nodemon
 COPY ./src/core ./src/core
 COPY ./src/adapter ./src/adapter
 COPY ./src/infrastructure ./src/infrastructure
 COPY . .
 EXPOSE 80
-CMD [ "node", "./src/main.js" ]
+CMD [ "npm","run", "start:watch" ]

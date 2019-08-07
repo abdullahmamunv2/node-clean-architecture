@@ -4,11 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --env dev",
-    "build --watch": "webpack --env dev --watch",
+    "build": "webpack --env dev  --watch",
     "build:prod": "webpack --env prod",
     "build:stage": "webpack --env stage",
-    "run:test": "nodemon ./src/main.js"
+    "start": "nodemon ./src/main.js",
+    "start:prod":"node ./src/main.js",
+    "start:stage":"node ./src/main.js"
+    
   },
   "repository": {
     "type": "git",

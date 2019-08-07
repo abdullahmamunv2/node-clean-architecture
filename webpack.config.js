@@ -146,21 +146,12 @@ module.exports = (env,args) =>{
 
       mainConfig.plugins = [
         new CopyPlugin([
-          { from: path.resolve(__dirname,'docker/dev/DockerFile') , to: path.resolve(__dirname,TARGET_DIR,ENVIRONMENT) },
           { from: path.resolve(__dirname,'config/default.json') , to: path.resolve(__dirname,TARGET_DIR,ENVIRONMENT,'config/default.json') },
           { from: path.resolve(__dirname,'config/custom-environment-variables.json') , to: path.resolve(__dirname,TARGET_DIR,ENVIRONMENT,'config/custom-environment-variables.json') },
           { from: path.resolve(__dirname,'config/development.json') , to: path.resolve(__dirname,TARGET_DIR,ENVIRONMENT,'config/development.json') },
           { from: path.resolve(__dirname,'package.json'), to: path.resolve(__dirname,TARGET_DIR,ENVIRONMENT) },
-          { from: path.resolve(__dirname,'pm2.run.json'), to: path.resolve(__dirname,TARGET_DIR,ENVIRONMENT) },
-          { from: path.resolve(__dirname,'log4js.json'), to: path.resolve(__dirname,TARGET_DIR,ENVIRONMENT) },
           { from: path.resolve(__dirname,'module.alias.config.js'), to: path.resolve(__dirname,TARGET_DIR,ENVIRONMENT) },
-        ]),
-        new NodemonPlugin({
-          watch: path.resolve('./dist/development'),
-          script: './dist/development/src/main.js',
-          verbose: true,
-        }),
-        //new BundleAnalyzerPlugin()
+        ])
       ]
 
 
@@ -231,14 +222,10 @@ module.exports = (env,args) =>{
 
     mainConfig.plugins = [
       new CopyPlugin([
-        { from: path.resolve(__dirname,'docker/stage/DockerFile') , to: path.resolve(__dirname,TARGET_DIR,ENVIRONMENT) },
         { from: path.resolve(__dirname,'config/default.json') , to: path.resolve(__dirname,TARGET_DIR,ENVIRONMENT,'config/default.json') },
         { from: path.resolve(__dirname,'config/custom-environment-variables.json') , to: path.resolve(__dirname,TARGET_DIR,ENVIRONMENT,'config/custom-environment-variables.json') },
         { from: path.resolve(__dirname,'config/staging.json') , to: path.resolve(__dirname,TARGET_DIR,ENVIRONMENT,'config/staging.json') },
-        { from: path.resolve(__dirname,'cert') , to: path.resolve(__dirname,TARGET_DIR,ENVIRONMENT,'cert') },
         { from: path.resolve(__dirname,'package.json'), to: path.resolve(__dirname,TARGET_DIR,ENVIRONMENT) },
-        { from: path.resolve(__dirname,'pm2.run.json'), to: path.resolve(__dirname,TARGET_DIR,ENVIRONMENT) },
-        { from: path.resolve(__dirname,'log4js.json'), to: path.resolve(__dirname,TARGET_DIR,ENVIRONMENT) },
         { from: path.resolve(__dirname,'module.alias.config.js'), to: path.resolve(__dirname,TARGET_DIR,ENVIRONMENT) },
       ]),
       //new NodemonPlugin(),
@@ -310,14 +297,10 @@ module.exports = (env,args) =>{
 
     mainConfig.plugins = [
       new CopyPlugin([
-        { from: path.resolve(__dirname,'docker/prod/DockerFile') , to: path.resolve(__dirname,TARGET_DIR,ENVIRONMENT) },
         { from: path.resolve(__dirname,'config/default.json') , to: path.resolve(__dirname,TARGET_DIR,ENVIRONMENT,'config/default.json') },
         { from: path.resolve(__dirname,'config/custom-environment-variables.json') , to: path.resolve(__dirname,TARGET_DIR,ENVIRONMENT,'config/custom-environment-variables.json') },
         { from: path.resolve(__dirname,'config/production.json') , to: path.resolve(__dirname,TARGET_DIR,ENVIRONMENT,'config/production.json') },
-        { from: path.resolve(__dirname,'cert') , to: path.resolve(__dirname,TARGET_DIR,ENVIRONMENT,'cert') },
         { from: path.resolve(__dirname,'package.json'), to: path.resolve(__dirname,TARGET_DIR,ENVIRONMENT) },
-        { from: path.resolve(__dirname,'pm2.run.json'), to: path.resolve(__dirname,TARGET_DIR,ENVIRONMENT) },
-        { from: path.resolve(__dirname,'log4js.json'), to: path.resolve(__dirname,TARGET_DIR,ENVIRONMENT) },
         { from: path.resolve(__dirname,'module.alias.config.js'), to: path.resolve(__dirname,TARGET_DIR,ENVIRONMENT) },
       ]),
       //new NodemonPlugin(),

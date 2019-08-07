@@ -1,10 +1,13 @@
-FROM node:8-alpine
-WORKDIR /usr/clean-architecture
+FROM node:10-alpine as builder
+WORKDIR /usr/temp
 COPY ./package*.json ./
-RUN npm install --only=prod
-RUN ./core ./core
-RUN ./adapter ./adapter
-RUN ./infrastructure ./infrastructure
+RUN npm install
 COPY . .
+RUN npm run build:prod
+
+FROM node:8-alpine
+WORKDIR /usr/api
 EXPOSE 80
-CMD [ "node", "./src/main.js" ]
+COPY --from=builder /usr/temp/dist/production .
+RUN npm install --only=prod
+CMD [ "npm","run", "start:prod" ]

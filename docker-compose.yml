@@ -7,3 +7,6 @@ services:
       dockerfile: DockerFile
     ports: 
       - "8080:80"
+    volumes:
+      - /usr/clean-architecture/node_modules
+      - ./dist/development:/usr/clean-architecture/
