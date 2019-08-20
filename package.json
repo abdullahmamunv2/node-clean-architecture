@@ -2,12 +2,12 @@
   "name": "clean-architecture",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./src/main.js",
   "scripts": {
-    "build": "webpack --env dev  --watch",
+    "build": "tsc -w --outDir ./dist/development",
     "build:prod": "webpack --env prod",
     "build:stage": "webpack --env stage",
-    "start": "nodemon ./src/main.js",
+    "start": "nodemon .",
     "start:prod":"node ./src/main.js",
     "start:stage":"node ./src/main.js"
     

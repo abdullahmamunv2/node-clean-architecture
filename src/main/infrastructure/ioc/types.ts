@@ -1,5 +1,4 @@
 
-export {CORE_TYPE} from '@core'
 
 
  const TYPES = {

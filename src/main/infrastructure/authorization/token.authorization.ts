@@ -6,11 +6,11 @@ import {
     ITokenBasedAuthorization,
     IScopeValidator,
     IJwtParser
-} from '@core'
+} from '@core/authorization'
 
 import {
-    CORE_TYPE
-} from '@core'
+    TYPE_AUTHORIZATION
+} from '@core/di'
 
 
 
@@ -18,7 +18,7 @@ import {
 import {
         inject,
         injectable
-    } from '@core'
+    } from '@core/di'
 
 @injectable()
 export class JwtTokenAuthorization implements ITokenBasedAuthorization{
@@ -26,11 +26,11 @@ export class JwtTokenAuthorization implements ITokenBasedAuthorization{
     _scopeValidator : IScopeValidator;
     _jwtTokenParser    : IJwtParser;
     constructor(
-            @inject(CORE_TYPE.TYPE_AUTHORIZATION.SCOPE_GATEWAY)
+            @inject(TYPE_AUTHORIZATION.SCOPE_GATEWAY)
             scopeGateway : IScopeGateway,
-            @inject(CORE_TYPE.TYPE_AUTHORIZATION.SCOPE_VALIDAOR)
+            @inject(TYPE_AUTHORIZATION.SCOPE_VALIDAOR)
             scopeValidator : IScopeValidator,
-            @inject(CORE_TYPE.TYPE_AUTHORIZATION.TOKEN_PARSER)
+            @inject(TYPE_AUTHORIZATION.TOKEN_PARSER)
             jwtTokenParser : IJwtParser,
 
         ){

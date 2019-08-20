@@ -1,6 +1,6 @@
 
-import {ValidatorError} from "@core";
-import { ErrorResponse } from "@core";
+import {ValidatorError} from "@core/errors";
+import { ErrorResponse } from "@core/errors";
 
 export default class ValidatorResponse extends ErrorResponse<ValidatorError>{
 

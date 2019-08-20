@@ -1,10 +1,10 @@
-import { IJwtParser,JwtToken } from "@core";
+import { IJwtParser,JwtToken } from "@core/authorization";
 
 
 import {
     inject,
     injectable
-} from '@core'
+} from '@core/di'
 
 @injectable()
 export default class JwtParser implements IJwtParser{

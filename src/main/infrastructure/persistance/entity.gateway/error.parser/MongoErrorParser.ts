@@ -1,6 +1,6 @@
-import { injectable} from "@core";
-import {EntityGatewayError} from "@core";
-import { IEntityGatewayErrorParser } from "@core";
+import { injectable} from "@core/di";
+import {EntityGatewayError} from "@core/errors";
+import { IEntityGatewayErrorParser } from "@core/domain";
 import {Error} from "mongoose";
 
 @injectable()

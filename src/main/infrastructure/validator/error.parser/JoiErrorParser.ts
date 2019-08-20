@@ -1,6 +1,6 @@
-import {IValidationErrorParser} from "@core";
-import { injectable } from "@core";
-import {ValidatorError} from "@core";
+import {IValidationErrorParser} from "@core/validator";
+import { injectable } from "@core/di";
+import {ValidatorError} from "@core/errors";
 
 @injectable()
 export default class JoiErrorParser implements IValidationErrorParser{

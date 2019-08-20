@@ -1,12 +1,12 @@
 
 import {
     ITokenValidator
-} from '@core'
+} from '@core/authorization'
 
 import {
     inject,
     injectable
-} from '@core'
+} from '@core/di'
 
 @injectable()
 export default class JwtTokenValidator implements ITokenValidator {

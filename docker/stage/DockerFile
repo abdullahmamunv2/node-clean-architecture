@@ -5,8 +5,9 @@ RUN npm install
 COPY . .
 RUN npm run build:prod
 
-FROM node:8-alpine
+FROM node:10-alpine
 WORKDIR /usr/api
+RUN export NODE_ENV=staging
 EXPOSE 80
 COPY --from=builder /usr/temp/dist/staging .
 RUN npm install --only=prod

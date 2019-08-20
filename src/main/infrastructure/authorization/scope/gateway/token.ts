@@ -1,12 +1,17 @@
 
 import {
-    IScopeGateway, AuthorizationError
-} from '@core'
+    IScopeGateway
+} from '@core/authorization'
+
+import {
+    AuthorizationError
+} from '@core/errors'
+
 
 import {
     inject,
     injectable
-} from '@core'
+} from '@core/di'
 
 @injectable()
 export default class TokenScopeGateway implements IScopeGateway {

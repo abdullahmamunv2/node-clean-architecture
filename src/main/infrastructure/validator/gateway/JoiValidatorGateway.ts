@@ -1,10 +1,10 @@
-import {ValidatorResponse} from "@core";
-import {IValidationErrorParser} from "@core";
-import {TYPES} from '@infrastructure'
-import { injectable, inject } from "@core";
-import {ValidatorError} from "@core";
-import { ERROR_TYPE } from "@core";
-import {IValidatorGateway} from "@core";
+import {ValidatorResponse} from "@core/validator";
+import {IValidationErrorParser} from "@core/validator";
+import {TYPES} from '@infrastructure/ioc'
+import { injectable, inject } from "@core/di";
+import {ValidatorError} from "@core/errors";
+import { ERROR_TYPE } from "@core/errors";
+import {IValidatorGateway} from "@core/validator";
 import * as Joi from '@hapi/joi'
 
 

@@ -1,15 +1,15 @@
-import {Interactor} from "@core";
-import { ApplicationError, ErrorResponse } from "@core";
-import { IPresenter } from "@core";
-import {inject, injectable } from "@core";
-import {IAuthorization } from "@core";
+import {Interactor} from "@core/io.port";
+import { ApplicationError, ErrorResponse } from "@core/errors";
+import { IPresenter } from "@core/io.port";
+import {inject, injectable } from "@core/di";
+import {IAuthorization } from "@core/authorization";
 import 
-        {CORE_TYPE}                   from "@core"
+        {TYPE_IO_PORT}                   from "@core/di"
 
 @injectable()
 export default class InteractorExecutor {
     constructor(
-        @inject(CORE_TYPE.TYPE_IO_PORT.PRESENTER)
+        @inject(TYPE_IO_PORT.PRESENTER)
         private errorPresenter: IPresenter<ErrorResponse<ApplicationError>>
     ){
 

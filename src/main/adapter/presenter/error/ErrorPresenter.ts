@@ -1,22 +1,24 @@
 import {
         ApplicationError,
-        ErrorResponse,
-        IPresenter}    from "@core";
+        ErrorResponse}    from "@core/errors";
+
+import {
+    IPresenter}    from "@core/io.port";
 
 import {
     injectable
-}                           from '@core';
+}                           from '@core/di';
 
 import {
     ErrorViewModel
-}                           from "@adapter";
+}                           from "@adapter/viewmodel";
 
 import {
     ERROR_TO_STATUS
-}                           from '@adapter';
+}                           from '@adapter/presenter';
 import {
     ERROR_TO_HTTP_CODE
-}                           from '@adapter'
+}                           from '@adapter/presenter'
 
 
 declare type HTTP_ERROR_TYPE = keyof typeof ERROR_TO_HTTP_CODE;

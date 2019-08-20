@@ -1,10 +1,10 @@
-import { IResponseMapper } from '@core';
-import {IValidationErrorParser} from "@core";
-import {Interactor} from '@core';
-import {IPresenter} from '@core';
-import {IValidatorGateway} from '@core';
-import {IEntityGatewayErrorParser} from '@core';
-import {IMongoRepository} from '@infrastructure';
+import { IResponseMapper } from '@core/mapper';
+import {IValidationErrorParser} from "@core/validator";
+import {Interactor} from '@core/io.port';
+import {IPresenter} from '@core/io.port';
+import {IValidatorGateway} from '@core/validator';
+import {IEntityGatewayErrorParser} from '@core/domain';
+import {IMongoRepository} from '@infrastructure/persistance';
 
 export {
     Interactor,
