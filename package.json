@@ -2,15 +2,16 @@
   "name": "clean-architecture",
   "version": "1.0.0",
   "description": "",
-  "main": "./src/main.js",
+  "main": "./main/main.js",
   "scripts": {
-    "build": "tsc -w --outDir ./dist/development",
-    "build:prod": "webpack --env prod",
-    "build:stage": "webpack --env stage",
+    "build": "tsc  -p ./tsconfig/tsconfig.dev.json",
+    "build:stage": "tsc  -p ./tsconfig/tsconfig.stage.json",
+    "build:prod": "tsc  -p ./tsconfig/tsconfig.prod.json",
+    "copy"       : "grunt dev",
+    "start:node": "node ./dist/development/main/main.js",
     "start": "nodemon .",
-    "start:prod":"node ./src/main.js",
-    "start:stage":"node ./src/main.js"
-    
+    "start:prod": "node .",
+    "start:stage": "node ."
   },
   "repository": {
     "type": "git",
@@ -51,6 +52,9 @@
     "copy-webpack-plugin": "^5.0.3",
     "eslint": "^5.16.0",
     "eslint-plugin-security": "^1.4.0",
+    "grunt": "^1.0.4",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-ts": "^5.5.1",
     "mocha": "^6.1.4",
     "nodemon": "^1.18.10",
     "nodemon-webpack-plugin": "^4.0.8",

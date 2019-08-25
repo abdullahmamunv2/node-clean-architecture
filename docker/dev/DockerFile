@@ -2,9 +2,5 @@ FROM node:10-alpine
 WORKDIR /usr/clean-architecture
 COPY ./package*.json ./
 RUN npm install --only=prod && npm install -D nodemon
-COPY ./src/core ./src/core
-COPY ./src/adapter ./src/adapter
-COPY ./src/infrastructure ./src/infrastructure
-COPY . .
-EXPOSE 80
-CMD [ "npm","run", "start:watch" ]
+EXPOSE 8080
+CMD [ "npm","run", "start" ]

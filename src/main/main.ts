@@ -1,7 +1,6 @@
-require('./../../module.alias.config')();
+require('./../module.alias.config')();
 require('reflect-metadata');
 let config    = require('config');
-console.log(config);
 import {
     HttpServer,
     IServer
