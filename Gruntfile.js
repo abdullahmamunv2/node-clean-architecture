@@ -40,10 +40,12 @@ module.exports = function(grunt) {
                   {
                       src: [
                           'package.json',
-                          'module.alias.config.js'
+                          'module.alias.config.js',
+                          'docker/stage/DockerFile'
                       ], 
                       dest: 'dist/staging/',
-                      expand: true
+                      expand: true,
+                      flatten: true
                   },
                 ],
             },
@@ -61,10 +63,12 @@ module.exports = function(grunt) {
                   {
                       src: [
                           'package.json',
-                          'module.alias.config.js'
+                          'module.alias.config.js',
+                          'docker/prod/DockerFile'
                       ], 
                       dest: 'dist/production/',
-                      expand: true
+                      expand: true,
+                      flatten: true
                   },
                 ],
             },
@@ -73,4 +77,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
 
     grunt.registerTask('dev', ["copy:development"]);
+    grunt.registerTask('stage', ["copy:staging"]);
+    grunt.registerTask('prod', ["copy:production"]);
   };

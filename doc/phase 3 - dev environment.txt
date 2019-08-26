@@ -1,8 +1,0 @@
-# Backend : 
-        1. platform : NodeJS.
-        2. Database : MongoDB(please share ur opinion)
-        3. Search   : Elastic search.(auto suggestion)
-
-# FronEnd : 
-        1. Out primary goal is to design a page like https://www.google.com/maps/place/%E0%A6%95%E0%A7%87%E0%A6%B0%E0%A6%A8/@34.500889,73.6916869,9z/data=!4m13!1m7!3m6!1s0x3b04ed3d2a087861:0x1e790e896aeffaa0!2z4KaV4Kao4KeN4Kav4Ka-4KaV4KeB4Kau4Ka-4Kaw4KeALCDgpqTgpr7gpq7gpr_gprLgpqjgpr7gpqHgp4EsIOCmreCmvuCmsOCmpA!3b1!8m2!3d8.0883064!4d77.5384507!3m4!1s0x38e0c58972f5ce89:0x4946107e9fd39f8d!8m2!3d34.6654053!4d73.9606476
-        2. React/angular.
