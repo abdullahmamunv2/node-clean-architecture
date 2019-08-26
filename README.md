@@ -10,7 +10,7 @@ Book :
 Clean architecture: a craftsman's guide to software structure and design -- Robert C. Martin(a.k.a Uncle Bob)
 
 ### Prerequisites
-1. Clean understanding on Clean architecture.
+1. Basic understanding on Clean architecture.
 2. Have basic idea on both NodeJS and Typescript.
 
 ### Installing
@@ -18,37 +18,47 @@ Clean architecture: a craftsman's guide to software structure and design -- Robe
 ```
 1. git clone https://github.com/kamrulhasan1203/node-clean-architecture.git
 2. cd project root folder/  
-3. npm install  
-4. npm run build        
-5. npm run start
+3. npm install
 ```
-### Server Configuration
 
-1. Go to ./config folder
-2. Change server ip and post.(default localhost:8080)
+### Building
+You can build application in three mood.(production,staging, development(default))
 
+```
+#development
+npm run build 
+
+#staging
+npm run build:stage 
+
+#production
+npm run build:prod
+
+#copy config files into dist folder
+npm run copy   
+```
+
+### RUN Command
+You can run using either node command or docker
+NODE :
+```
+npm run start:node 
+```
+DOCKER : 
+```
+docker-compose up
+```
 ### Test
-1. Go to browser and hit http://{ip}:{port}/address/5c6f217412d1a4283ccd5e01
-2. check error responses : 
-    http://{ip}:{port}/address/5c6f217412d1a4283ccd5e
-    http://{ip}:{port}/address/5c6f217412d1a4283ccd5e99
+1. Go to browser and hit http://localhost:8080
 
-## Deployment
-
-
-
-## Built With
-
-
-## Contributing
-
-
+### Documentation
+Soon i'm going to write documentation on each part of the project structure.
 
 ## Versioning
-
+Currently it's in development phase.
 
 ## Authors
-
+1. iamcharlie
 
 
 ## License

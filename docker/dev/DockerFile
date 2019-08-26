@@ -1,0 +1,6 @@
+FROM node:10-alpine
+WORKDIR /usr/clean-architecture
+COPY ./package*.json ./
+RUN npm install --only=prod && npm install -D nodemon
+EXPOSE 8080
+CMD [ "npm","run", "start" ]

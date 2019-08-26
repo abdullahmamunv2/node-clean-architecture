@@ -1,0 +1,14 @@
+FROM node:10-alpine as builder
+WORKDIR /usr/temp
+COPY ./package*.json ./
+RUN npm install
+COPY . .
+RUN npm run build:prod
+
+FROM node:10-alpine
+WORKDIR /usr/api
+RUN export NODE_ENV=staging
+EXPOSE 80
+COPY --from=builder /usr/temp/dist/staging .
+RUN npm install --only=prod
+CMD [ "npm","run", "start:stage" ]

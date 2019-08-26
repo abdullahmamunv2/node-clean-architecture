@@ -5,7 +5,7 @@ use(chaiAsPromised);
 import {describe,it} from 'mocha'
 
 
-import {IOContainer,I, E}  from  '@ioc'
+/*import {IOContainer,I, E}  from  '@ioc'
 import {CORE_TYPE}         from '@core/types'
 import {
     Entity} from '@core/domain'
@@ -50,3 +50,5 @@ describe('Address Entity Gateway',()=>{
     });
     
 })
+
+*/
