@@ -11,7 +11,7 @@
     "start:local": "node ./dist/development/main/main.js",
     "start": "nodemon .",
     "start:prod": "node .",
-    "start:stage": "node ."
+    "start:stage": "node ." 
   },
   "repository": {
     "type": "git",
