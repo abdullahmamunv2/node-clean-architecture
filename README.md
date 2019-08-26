@@ -42,11 +42,11 @@ npm run copy
 You can run using either node command or docker
 NODE :
 ```
-npm run start:node 
+npm run start:local
 ```
 DOCKER : 
 ```
-docker-compose up
+docker-compose up --build
 ```
 ### Test
 1. Go to browser and hit http://localhost:8080

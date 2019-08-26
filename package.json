@@ -4,14 +4,11 @@
   "description": "",
   "main": "./main/main.js",
   "scripts": {
-    "build:w": "tsc  -p ./tsconfig/tsconfig.dev.json -w",
-    "build": "tsc  -p ./tsconfig/tsconfig.dev.json",
-    "build:stage": "tsc  -p ./tsconfig/tsconfig.stage.json",
-    "build:prod": "tsc  -p ./tsconfig/tsconfig.prod.json",
-    "copy": "grunt dev",
-    "copy:stage": "grunt stage",
-    "copy:prod": "grunt prod",
-    "start:node": "node ./dist/development/main/main.js",
+    "build:w": "cross-env grunt dev && tsc-watch --project ./tsconfig/tsconfig.dev.json --onSuccess  \" nodemon ./dist/development/main/main.js\" ",
+    "build": "cross-env tsc  -p ./tsconfig/tsconfig.dev.json && grunt dev ",
+    "build:stage": "cross-env tsc  -p ./tsconfig/tsconfig.stage.json && grunt stage",
+    "build:prod": "cross-env tsc  -p ./tsconfig/tsconfig.prod.json && grunt prod",
+    "start:local": "node ./dist/development/main/main.js",
     "start": "nodemon .",
     "start:prod": "node .",
     "start:stage": "node ."
@@ -51,12 +48,14 @@
     "@types/node": "^11.11.4",
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
+    "cross-env": "^5.2.0",
     "eslint": "^5.16.0",
     "eslint-plugin-security": "^1.4.0",
     "grunt": "^1.0.4",
     "grunt-contrib-copy": "^1.0.0",
     "mocha": "^6.1.4",
     "nodemon": "^1.18.10",
+    "tsc-watch": "^2.4.0",
     "typescript": "^3.5.3"
   }
 }
