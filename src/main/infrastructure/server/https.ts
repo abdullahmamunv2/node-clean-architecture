@@ -62,7 +62,7 @@ export default class HttpServer extends EventEmitter implements Iserver{
                 this.server.close((err:Error|undefined)=>{
                     if(err){
                         let error = new ServerError(err.message,'ERR_UNABLE_TO_STOP');
-                        reject(err);
+                        reject(error);
                     }
                     else{
                         resolve(true);

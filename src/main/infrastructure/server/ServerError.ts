@@ -1,5 +1,5 @@
 export default class ServerError extends Error {
-    message   : string = "EntityGatewayError";
+    message   : string = "SERVER_ERROR";
     code      : number | string;
     timestamp : Date; 
     constructor(message : string,

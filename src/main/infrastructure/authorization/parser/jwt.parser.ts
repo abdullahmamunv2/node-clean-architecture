@@ -2,7 +2,6 @@ import { IJwtParser,JwtToken } from "@core/authorization";
 
 
 import {
-    inject,
     injectable
 } from '@core/di'
 
