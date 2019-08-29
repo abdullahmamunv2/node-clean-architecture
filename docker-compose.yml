@@ -10,3 +10,6 @@ services:
     volumes:
       - /usr/clean-architecture/node_modules
       - ./dist/development:/usr/clean-architecture/
+  sql-server:
+    ports:
+      
