@@ -1,22 +1,25 @@
 import IServer from './IServer'
-import {Server,createServer, RequestListener} from 'http';
+import {RequestListener} from 'http';
+import {Server,createServer, ServerOptions} from 'https';
 import { EventEmitter } from 'events';
 import ServerError from './ServerError'
 
 export default class HttpServer extends EventEmitter implements IServer{
-
+    
     private server : Server|null=null;
     private host : string;
     private port : number;
     private requestListener : RequestListener;
-    constructor(host : string,port:number,requestListener:RequestListener){
+    private options:ServerOptions;
+    constructor(host : string,port:number,requestListener:RequestListener,options:ServerOptions){
         super();
         this.host = host;
         this.port = port;
         this.requestListener = requestListener;
+        this.options=options;
     }
     private _create():void{
-        this.server = createServer(this.requestListener);
+        this.server = createServer(this.options,this.requestListener);
     }
     private _listen() : Promise<boolean | Error>{
         return new Promise((resolve,reject)=>{
