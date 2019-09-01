@@ -1,24 +1,25 @@
-import Iserver from './IServer'
-import {Server,ServerOptions,createServer, RequestListener} from 'http';
+import IServer from './IServer'
+import {Server,ClientRequestArgs,createServer, RequestListener} from 'http';
 import { EventEmitter } from 'events';
 import ServerError from './ServerError'
 
-export default class HttpServer extends EventEmitter implements Iserver{
-    
+export default class HttpServer extends EventEmitter implements IServer{
+
     private server : Server|null=null;
     private host : string;
     private port : number;
     private requestListener : RequestListener;
-    private options : any = {
+    private options : ClientRequestArgs = {
         protocol : 'http',
         timeout  : 6*1000
     };
-    constructor(host : string,port:number,requestListener:RequestListener,options : any={}){
+    constructor(host : string,port:number,requestListener:RequestListener,options:ClientRequestArgs){
         super();
         this.host = host;
         this.port = port;
         this.requestListener = requestListener;
-        this.options = options;
+        if(options)
+            this.options = options;
     }
     private _create():void{
         this.server = createServer(this.requestListener);
