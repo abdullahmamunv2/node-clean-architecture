@@ -22,7 +22,7 @@
   "license": "ISC",
   "homepage": "https://github.com/kamrulhasan1203/node-clean-architecture",
   "dependencies": {
-    "@hapi/joi": "^15.1.0",
+    "@hapi/joi": "^15.1.1",
     "automapper-ts": "^1.9.0",
     "config": "^3.0.1",
     "cors": "^2.8.5",
