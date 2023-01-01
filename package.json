@@ -24,7 +24,7 @@
   "dependencies": {
     "@hapi/joi": "^15.1.0",
     "automapper-ts": "^1.9.0",
-    "config": "^3.0.1",
+    "config": "^3.3.8",
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "inversify": "^3.3.0",
